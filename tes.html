@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Hafis & Amelia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Configurations */
+html {
+    scroll-behavior: smooth;
+}
+
+.font-serif { font-family: 'Playfair Display', serif; }
+.font-sans { font-family: 'Montserrat', sans-serif; }
+
+/* Hero & Slideshow */
+.slideshow-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide.active { opacity: 1; }
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+    z-index: 1;
+}
+
+/* Countdown */
+.countdown-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 65px;
+    height: 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+/* Marquee Gallery */
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee-img {
+    width: 150px;
+    height: 150px;
+    object-cover: cover;
+    margin-right: 8px;
+    border-radius: 4px;
+}
+
+/* Couple Section Styles */
+.pattern-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    pointer-events: none;
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+}
+
+.vertical-line {
+    width: 1px;
+    height: 50px;
+    background: #a8a29e;
+    margin: 30px auto 0;
+}
+
+.arch-frame {
+    position: relative;
+    width: 260px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 150px 150px 0 0;
+    border: 6px solid white;
+    box-shadow: 10px 20px 25px 5px rgba(0, 0, 0, 0.2);
+}
+
+.arch-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.couple-card:hover .arch-frame img {
+    transform: scale(1.08);
+}
+
+.parents-info {
+    font-size: 0.875rem;
+    color: #57534e;
+    font-style: italic;
+}
+
+/* Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 50;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 10px;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.nav-item:hover { opacity: 1; }
+
+/* Utilities */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="font-sans bg-black">
+
+   <section id="home" class="relative h-screen w-full flex items-end pb-32 px-8 overflow-hidden">
+        <div class="slideshow-container">
+            <div class="slide active" style="background-image: url('Images/G-4.png');"></div>
+            <div class="slide" style="background-image: url('Images/G-5.png');"></div>
+            <div class="slide" style="background-image: url('Images/G-6.png');"></div>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-lg text-white">
+            <p class="uppercase tracking-[0.3em] text-[10px] mb-2 opacity-90">The Wedding Of</p>
+            <h1 class="font-serif text-5xl md:text-7xl leading-[1.1] mb-2">Hafis &<br>Amelia</h1>
+            <p class="text-sm tracking-widest mb-10 opacity-80 font-light">Rabu, 3 Desember 2025</p>
+
+            <div class="space-y-6">
+                <p class="uppercase tracking-[0.4em] text-[10px] font-semibold opacity-70">Save The Date</p>
+                <div class="flex gap-2">
+                    <div class="countdown-item">
+                        <span id="days" class="text-lg font-bold">00</span>
+                        <span class="text-[8px] uppercase tracking-tighter">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours" class="text-lg font-bold">00</span>
+                        <span class="text-[8px] uppercase tracking-tighter">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes" class="text-lg font-bold">00</span>
+                        <span class="text-[8px] uppercase tracking-tighter">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds" class="text-lg font-bold">00</span>
+                        <span class="text-[8px] uppercase tracking-tighter">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE SECTION -->
+    <section class="bg-[#4a4a4a] text-white py-16 overflow-hidden text-center">
+        <div class="mb-6 opacity-80">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="mx-auto" viewBox="0 0 16 16">
+                <path d="M12 12c0-2.923-1.923-5-5-5V5c3.314 0 6 2.686 6 6h-1zm-7 0c0-2.923-1.923-5-5-5V5c3.314 0 6 2.686 6 6H5z"/>
+            </svg>
+        </div>
+        <div class="max-w-md mx-auto mb-10 px-6">
+            <p class="font-sans text-sm leading-relaxed tracking-wide italic mb-4">
+                "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya..."
+            </p>
+            <p class="text-xs font-bold tracking-widest opacity-70 uppercase">(QS. Ar-Rum: 21)</p>
+        </div>
+
+        <!-- Marquee Gallery -->
+        <div class="relative flex overflow-hidden">
+            <div class="animate-marquee">
+                <img src="https://i.pinimg.com/736x/37/9a/8b/379a8b4d1a9b2c8c6cfb7b50efba8baf.jpg" class="marquee-img" alt="1">
+                <img src="Images/G-2.png" class="marquee-img" alt="2">
+                <img src="Images/G-3.png" class="marquee-img" alt="3">
+                <img src="Images/G-4.png" class="marquee-img" alt="4">
+                <img src="Images/G-5.png" class="marquee-img" alt="5">
+                <!-- Duplicate for loop -->
+                <img src="Images/G-1.png" class="marquee-img" alt="1">
+                <img src="Images/G-2.png" class="marquee-img" alt="2">
+                <img src="Images/G-3.png" class="marquee-img" alt="3">
+                <img src="Images/G-4.png" class="marquee-img" alt="4">
+                <img src="Images/G-5.png" class="marquee-img" alt="5">
+            </div>
+        </div>
+    </section>
+
+    <!-- COUPLE SECTION (Berdasarkan Screenshot 2026-05-02 160048.jpg) -->
+    <section id="couple" class="py-20 bg-[#f4f4f2] text-center relative overflow-hidden">
+        <div class="pattern-overlay"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="mb-16">
+                <h2 class="font-serif text-7xl md:text-8xl text-stone-400 opacity-40 tracking-widest mb-6">H/A</h2>
+                <p class="font-sans text-stone-600 text-sm max-w-md mx-auto leading-relaxed">
+                    Tanpa mengurangi rasa hormat, dengan ini kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami
+                </p>
+                <div class="vertical-line"></div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-center items-center gap-16 md:gap-24">
+                <!-- Pria -->
+                <div class="couple-card">
+                    <div class="arch-frame">
+                        <img src="Images/Pria.PNG" alt="Hafis">
+                    </div>
+                    <h3 class="font-serif text-3xl text-stone-800 mt-6 mb-2">Hafis</h3>
+                    <p class="text-xs tracking-widest text-stone-500 uppercase mb-4">M. Hafis Al-Faruqi</p>
+                    <div class="parents-info">
+                        <p>Putra dari</p>
+                        <p class="font-semibold">Bpk. Nama Ayah & Ibu Nama Ibu</p>
+                    </div>
+                </div>
+
+                <!-- Wanita -->
+                <div class="couple-card">
+                    <div class="arch-frame">
+                        <img src="Images/Wanita.png" alt="Amelia">
+                    </div>
+                    <h3 class="font-serif text-3xl text-stone-800 mt-6 mb-2">Amelia</h3>
+                    <p class="text-xs tracking-widest text-stone-500 uppercase mb-4">Amelia Putri, S.Kom</p>
+                    <div class="parents-info">
+                        <p>Putri dari</p>
+                        <p class="font-semibold">Bpk. Nama Ayah & Ibu Nama Ibu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <nav class="bottom-nav">
+        <a href="#home" class="nav-item">
+            <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            <span>Cover</span>
+        </a>
+        <a href="#couple" class="nav-item">
+            <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            <span>Couple</span>
+        </a>
+    </nav>
+    <script>
+        // Script untuk Slideshow Background
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 5000); // Ganti gambar setiap 5 detik
+
+        // Script untuk Countdown Sederhana
+        function updateCountdown() {
+            const targetDate = new Date("Dec 3, 2025 08:00:00").getTime();
+            const now = new Date().getTime();
+            const gap = targetDate - now;
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            if (gap > 0) {
+                document.getElementById('days').innerText = Math.floor(gap / day);
+                document.getElementById('hours').innerText = Math.floor((gap % day) / hour);
+                document.getElementById('minutes').innerText = Math.floor((gap % hour) / minute);
+                document.getElementById('seconds').innerText = Math.floor((gap % minute) / second);
+            }
+        }
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
+</html>
