@@ -744,7 +744,10 @@
             Wishes
         </a>
     </nav>
-
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-img" src="" alt="Full Image">
+</div>
     <script>
         // --- Script untuk Slideshow ---
         const slides = document.querySelectorAll('.slide');
@@ -817,11 +820,5 @@
         }
         
     </script>
-<!-- Struktur Lightbox -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <span class="close-lightbox">&times;</span>
-    <img id="lightbox-img" src="" alt="Full Image">
-</div>
-
 </body>
 </html>
