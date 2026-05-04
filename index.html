@@ -4,276 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan - Hafis & Amelia</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        /* Custom Configurations */
-html {
-    scroll-behavior: smooth;
-}
-
-.font-serif { font-family: 'Playfair Display', serif; }
-.font-sans { font-family: 'Montserrat', sans-serif; }
-
-/* Hero & Slideshow */
-.slideshow-container {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-    background-size: cover;
-    background-position: center;
-}
-
-.slide.active { opacity: 1; }
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
-    z-index: 1;
-}
-
-/* Countdown */
-.countdown-item {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    width: 65px;
-    height: 65px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-}
-
-/* Marquee Gallery */
-.animate-marquee {
-    display: flex;
-    width: max-content;
-    animation: marquee 25s linear infinite;
-}
-
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.marquee-img {
-    width: 150px;
-    height: 150px;
-    object-cover: cover;
-    margin-right: 8px;
-    border-radius: 4px;
-}
-
-/* Couple Section Styles */
-.pattern-overlay {
-    position: absolute;
-    inset: 0;
-    opacity: 0.05;
-    pointer-events: none;
-    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
-}
-
-.vertical-line {
-    width: 1px;
-    height: 50px;
-    background: #a8a29e;
-    margin: 30px auto 0;
-}
-
-.arch-frame {
-    position: relative;
-    width: 260px;
-    height: 350px;
-    overflow: hidden;
-    border-radius: 150px 150px 0 0;
-    border: 6px solid white;
-    box-shadow: 10px 20px 25px 5px rgba(0, 0, 0, 0.2);
-}
-
-.arch-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.couple-card:hover .arch-frame img {
-    transform: scale(1.08);
-}
-
-.parents-info {
-    font-size: 0.875rem;
-    color: #57534e;
-    font-style: italic;
-}
-
-/* Navigation */
-.bottom-nav {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    height: 70px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 50;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    font-size: 10px;
-    text-decoration: none;
-    opacity: 0.6;
-    transition: opacity 0.3s;
-}
-
-.nav-item:hover { opacity: 1; }
-
-/* Utilities */
-.no-scrollbar::-webkit-scrollbar { display: none; }
+/* --- GLOBAL & UTILITIES --- */
+        html { scroll-behavior: smooth; }
+        body { background-color: #000; margin: 0; padding: 0; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Montserrat', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        /* --- HERO SECTION --- */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 8rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            overflow: hidden;
+        }
+        
+        .slideshow-container { position: absolute; inset: 0; z-index: 0; }
+        .slide { 
+            position: absolute; inset: 0; opacity: 0; 
+            transition: opacity 2s ease-in-out; 
+            background-size: cover; background-position: center; 
+        }
+        .slide.active { opacity: 1; }
+        .hero-overlay { 
+            position: absolute; inset: 0; 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)); 
+            z-index: 1; 
+        }
+        
+        .hero-content { position: relative; z-index: 10; width: 100%; max-width: 32rem; color: #fff; }
+        .hero-tagline { text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; margin-bottom: 0.5rem; opacity: 0.9; }
+        .hero-names { font-size: 3rem; line-height: 1.1; margin-bottom: 0.5rem; }
+        .hero-date { font-size: 0.875rem; letter-spacing: 0.1em; margin-bottom: 2.5rem; opacity: 0.8; font-weight: 300; }
+        
+        .countdown-container { display: flex; gap: 0.5rem; }
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 60px; height: 60px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            border-radius: 8px;
+        }
+        
+        /* --- COUPLE SECTION --- */
+        .couple-section {
+            position: relative;
+            padding: 5rem 0;
+            background-color: #f4f4f2;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .pattern-overlay {
+            position: absolute; inset: 0; opacity: 0.05; pointer-events: none;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+        }
+        
+        .vertical-line { width: 1px; height: 50px; background: #a8a29e; margin: 2rem auto; }
+        
+        .couple-grid {
+            display: flex; flex-direction: column; 
+            align-items: center; justify-content: center;
+            gap: 4rem; padding: 0 1.5rem;
+        }
+        
+        .arch-frame {
+            width: 260px; height: 350px;
+            border-radius: 130px 130px 0 0;
+            overflow: hidden; border: 6px solid #fff;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .arch-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+        .couple-card:hover .arch-frame img { transform: scale(1.1); }
+        
+        /* --- EVENT SECTION --- */
+        .event-section {
+            position: relative; min-height: 100vh; width: 100%;
+            padding: 6rem 0; display: flex; align-items: center;
+            justify-content: center; color: #fff; text-align: center;
+        }
+        
+        .event-bg-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(4px); z-index: 0; }
+        .event-overlay { position: absolute; inset: 0; background-color: rgba(0,0,0,0.6); z-index: 1; }
+        
+        .event-content-wrapper { position: relative; z-index: 10; width: 100%; padding: 0 1.5rem; }
+        
+        .title-line { height: 1px; width: 2.5rem; background-color: rgba(255,255,255,0.4); }
+        .event-main-title { font-size: 3rem; font-style: italic; }
+        
+        .btn-maps {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.5rem; border-radius: 9999px;
+            background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);
+            backdrop-filter: blur(10px); color: #fff; text-decoration: none;
+            transition: all 0.3s; margin-top: 1.5rem;
+        }
+        .btn-maps:hover { background: #fff; color: #000; }
+        
+        /* --- NAVIGATION --- */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            height: 75px; background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px); display: flex;
+            justify-content: space-around; align-items: center;
+            z-index: 100; border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #fff; text-decoration: none; opacity: 0.6; font-size: 10px; transition: 0.3s; }
+        .nav-item:hover { opacity: 1; }
     </style>
 </head>
-<body class="font-sans bg-black">
+<body class="no-scrollbar">
 
-   <section id="home" class="relative h-screen w-full flex items-end pb-32 px-8 overflow-hidden">
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-section">
         <div class="slideshow-container">
-            <div class="slide active" style="background-image: url('Images/G-4.PNG');"></div>
-            <div class="slide" style="background-image: url('Images/G-5.PNG');"></div>
-            <div class="slide" style="background-image: url('Images/G-6.PNG');"></div>
+            <div class="slide active" style="background-image: url('Images/G-4.png');"></div>
+            <div class="slide" style="background-image: url('Images/G-5.png');"></div>
             <div class="hero-overlay"></div>
         </div>
-
-        <div class="relative z-10 w-full max-w-lg text-white">
-            <p class="uppercase tracking-[0.3em] text-[10px] mb-2 opacity-90">The Wedding Of</p>
-            <h1 class="font-serif text-5xl md:text-7xl leading-[1.1] mb-2">Hafis &<br>Amelia</h1>
-            <p class="text-sm tracking-widest mb-10 opacity-80 font-light">Rabu, 3 Desember 2025</p>
-
-            <div class="space-y-6">
-                <p class="uppercase tracking-[0.4em] text-[10px] font-semibold opacity-70">Save The Date</p>
-                <div class="flex gap-2">
-                    <div class="countdown-item">
-                        <span id="days" class="text-lg font-bold">00</span>
-                        <span class="text-[8px] uppercase tracking-tighter">Days</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="hours" class="text-lg font-bold">00</span>
-                        <span class="text-[8px] uppercase tracking-tighter">Hours</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="minutes" class="text-lg font-bold">00</span>
-                        <span class="text-[8px] uppercase tracking-tighter">Minutes</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="seconds" class="text-lg font-bold">00</span>
-                        <span class="text-[8px] uppercase tracking-tighter">Seconds</span>
-                    </div>
-                </div>
+        <div class="hero-content">
+            <p class="hero-tagline font-sans">The Wedding Of</p>
+            <h1 class="hero-names font-serif">Hafis &<br>Amelia</h1>
+            <p class="hero-date font-sans font-light">Rabu, 3 Desember 2025</p>
+            <div class="countdown-container font-sans">
+                <div class="countdown-item"><span id="days">00</span><small>Days</small></div>
+                <div class="countdown-item"><span id="hours">00</span><small>Hrs</small></div>
+                <div class="countdown-item"><span id="minutes">00</span><small>Min</small></div>
+                <div class="countdown-item"><span id="seconds">00</span><small>Sec</small></div>
             </div>
         </div>
     </section>
 
-    <!-- QUOTE SECTION -->
-    <section class="bg-[#4a4a4a] text-white py-16 overflow-hidden text-center">
-        <div class="mb-6 opacity-80">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="mx-auto" viewBox="0 0 16 16">
-                <path d="M12 12c0-2.923-1.923-5-5-5V5c3.314 0 6 2.686 6 6h-1zm-7 0c0-2.923-1.923-5-5-5V5c3.314 0 6 2.686 6 6H5z"/>
-            </svg>
-        </div>
-        <div class="max-w-md mx-auto mb-10 px-6">
-            <p class="font-sans text-sm leading-relaxed tracking-wide italic mb-4">
-                "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya..."
-            </p>
-            <p class="text-xs font-bold tracking-widest opacity-70 uppercase">(QS. Ar-Rum: 21)</p>
-        </div>
-
-        <!-- Marquee Gallery -->
-        <div class="relative flex overflow-hidden">
-            <div class="animate-marquee">
-                <img src="Images/G-1.PNG" class="marquee-img" alt="1">
-                <img src="Images/G-2.PNG" class="marquee-img" alt="2">
-                <img src="Images/G-3.PNG" class="marquee-img" alt="3">
-                <img src="Images/G-4.PNG" class="marquee-img" alt="4">
-                <img src="Images/G-5.PNG" class="marquee-img" alt="5">
-                <!-- Duplicate for loop -->
-                <img src="Images/G-6.PNG" class="marquee-img" alt="1">
-                <img src="Images/G-2.PNG" class="marquee-img" alt="2">
-                <img src="Images/G-3.PNG" class="marquee-img" alt="3">
-                <img src="Images/G-4.PNG" class="marquee-img" alt="4">
-                <img src="Images/G-5.PNG" class="marquee-img" alt="5">
-            </div>
-        </div>
-    </section>
-
-    <!-- COUPLE SECTION (Berdasarkan Screenshot 2026-05-02 160048.jpg) -->
-    <section id="couple" class="py-20 bg-[#f4f4f2] text-center relative overflow-hidden">
+    <!-- COUPLE SECTION -->
+    <section id="couple" class="couple-section">
         <div class="pattern-overlay"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="mb-16">
-                <h2 class="font-serif text-7xl md:text-8xl text-stone-400 opacity-40 tracking-widest mb-6">H/A</h2>
-                <p class="font-sans text-stone-600 text-sm max-w-md mx-auto leading-relaxed">
-                    Tanpa mengurangi rasa hormat, dengan ini kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami
-                </p>
-                <div class="vertical-line"></div>
+        <div class="couple-header">
+            <h2 class="font-serif" style="font-size: 5rem; color: #ccc; opacity: 0.4;">H/A</h2>
+            <p class="font-sans" style="font-size: 14px; color: #666; max-width: 300px; margin: 0 auto;">Kami mengundang Anda untuk merayakan kebahagiaan kami.</p>
+            <div class="vertical-line"></div>
+        </div>
+        <div class="couple-grid">
+            <div class="couple-card">
+                <div class="arch-frame"><img src="Images/G-Pria.png" alt="Hafis"></div>
+                <h3 class="font-serif" style="font-size: 2rem; margin-top: 1rem;">Hafis</h3>
+                <p class="font-sans" style="font-size: 10px; letter-spacing: 2px; color: #888;">M. HAFIS AL-FARUQI</p>
             </div>
+            <div class="couple-card">
+                <div class="arch-frame"><img src="Images/G-Wanita.png" alt="Amelia"></div>
+                <h3 class="font-serif" style="font-size: 2rem; margin-top: 1rem;">Amelia</h3>
+                <p class="font-sans" style="font-size: 10px; letter-spacing: 2px; color: #888;">AMELIA PUTRI, S.KOM</p>
+            </div>
+        </div>
+    </section>
 
-            <div class="flex flex-col md:flex-row justify-center items-center gap-16 md:gap-24">
-                <!-- Pria -->
-                <div class="couple-card">
-                    <div class="arch-frame">
-                        <img src="Images/Pria.PNG" alt="Hafis">
-                    </div>
-                    <h3 class="font-serif text-3xl text-stone-800 mt-6 mb-2">Hafis</h3>
-                    <p class="text-xs tracking-widest text-stone-500 uppercase mb-4">M. Hafis Al-Faruqi</p>
-                    <div class="parents-info">
-                        <p>Putra dari</p>
-                        <p class="font-semibold">Bpk. Nama Ayah & Ibu Nama Ibu</p>
-                    </div>
+    <!-- EVENT SECTION -->
+    <section id="event" class="event-section">
+        <img src="Images/G-6.png" class="event-bg-image" alt="bg">
+        <div class="event-overlay"></div>
+        <div class="event-content-wrapper">
+            <div class="event-header">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <div class="title-line"></div>
+                    <h2 class="event-main-title font-serif">Wedding</h2>
+                    <div class="title-line"></div>
                 </div>
-
-                <!-- Wanita -->
-                <div class="couple-card">
-                    <div class="arch-frame">
-                        <img src="Images/Wanita.PNG" alt="Amelia">
-                    </div>
-                    <h3 class="font-serif text-3xl text-stone-800 mt-6 mb-2">Amelia</h3>
-                    <p class="text-xs tracking-widest text-stone-500 uppercase mb-4">Amelia Putri, S.Kom</p>
-                    <div class="parents-info">
-                        <p>Putri dari</p>
-                        <p class="font-semibold">Bpk. Nama Ayah & Ibu Nama Ibu</p>
-                    </div>
-                </div>
+                <p class="font-serif" style="font-size: 1.5rem; opacity: 0.8;">Event</p>
+            </div>
+            <div class="event-card font-sans">
+                <h3 class="font-serif" style="font-size: 1.8rem;">Resepsi</h3>
+                <p style="font-style: italic; opacity: 0.7;">Rabu</p>
+                <p style="font-size: 4rem; font-weight: bold; margin: 10px 0;">03</p>
+                <p style="letter-spacing: 4px; text-transform: uppercase; font-size: 12px;">Desember 2025</p>
+                <a href="#" class="btn-maps">Google Map</a>
             </div>
         </div>
     </section>
 
     <!-- NAVIGATION -->
-    <nav class="bottom-nav">
-        <a href="#home" class="nav-item">
-            <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-            <span>Cover</span>
-        </a>
-        <a href="#couple" class="nav-item">
-            <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-            <span>Couple</span>
-        </a>
+    <nav class="bottom-nav font-sans">
+        <a href="#home" class="nav-item"><span>Cover</span></a>
+        <a href="#couple" class="nav-item"><span>Couple</span></a>
+        <a href="#event" class="nav-item"><span>Event</span></a>
     </nav>
+
     <script>
-        // Script untuk Slideshow Background
+// --- BACKGROUND SLIDESHOW ---
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         
@@ -282,29 +206,23 @@ html {
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-
-        setInterval(nextSlide, 5000); // Ganti gambar setiap 5 detik
-
-        // Script untuk Countdown Sederhana
+        setInterval(nextSlide, 5000);
+        
+        // --- COUNTDOWN TIMER ---
         function updateCountdown() {
-            const targetDate = new Date("Dec 3, 2025 08:00:00").getTime();
+            const target = new Date("Dec 3, 2025 08:00:00").getTime();
             const now = new Date().getTime();
-            const gap = targetDate - now;
-
-            const second = 1000;
-            const minute = second * 60;
-            const hour = minute * 60;
-            const day = hour * 24;
-
-            if (gap > 0) {
-                document.getElementById('days').innerText = Math.floor(gap / day);
-                document.getElementById('hours').innerText = Math.floor((gap % day) / hour);
-                document.getElementById('minutes').innerText = Math.floor((gap % hour) / minute);
-                document.getElementById('seconds').innerText = Math.floor((gap % minute) / second);
+            const diff = target - now;
+        
+            if (diff > 0) {
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                document.getElementById('minutes').innerText = Math.floor((diff / 1000 / 60) % 60);
+                document.getElementById('seconds').innerText = Math.floor((diff / 1000) % 60);m
             }
         }
         setInterval(updateCountdown, 1000);
+        
     </script>
 </body>
-</html>
 </html>
