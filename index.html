@@ -3,226 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan - Hafis & Amelia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <title>Undangan Pernikahan - Hafis & Amelia (Slideshow)</title>
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-/* --- GLOBAL & UTILITIES --- */
-        html { scroll-behavior: smooth; }
-        body { background-color: #000; margin: 0; padding: 0; }
-        .font-serif { font-family: 'Playfair Display', serif; }
-        .font-sans { font-family: 'Montserrat', sans-serif; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        
-        /* --- HERO SECTION --- */
-        .hero-section {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #333;
+            color: white;
+            overflow-x: hidden;
+            height: 100vh; /* Pastikan body penuh layar */
+        }
+
+        /* --- CSS untuk Slideshow Background --- */
+        .slideshow-container {
+            position: fixed; /* Menjaga background tetap di tempat */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Meletakkan slideshow di belakang konten */
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0; /* Mulai dengan transparan */
+            transition: opacity 1.5s ease-in-out; /* Efek fade in/out */
+        }
+
+        /* Menampilkan slide pertama saat dimuat */
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Overlay gelap agar teks lebih mudah terbaca */
+        .slideshow-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+            z-index: 1; /* Di depan slide, di belakang konten */
+        }
+        /* -------------------------------------- */
+
+        /* Hero Section - Diubah untuk bekerja dengan slideshow */
+        .hero {
             position: relative;
             height: 100vh;
             width: 100%;
             display: flex;
-            align-items: flex-end;
-            padding-bottom: 8rem;
-            padding-left: 2rem;
-            padding-right: 2rem;
-            overflow: hidden;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 120px;
+            text-align: left;
+            padding-left: 30px;
+            z-index: 2; /* Meletakkan konten hero di depan slideshow */
         }
-        
-        .slideshow-container { position: absolute; inset: 0; z-index: 0; }
-        .slide { 
-            position: absolute; inset: 0; opacity: 0; 
-            transition: opacity 2s ease-in-out; 
-            background-size: cover; background-position: center; 
+
+        .hero-text p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 5px;
         }
-        .slide.active { opacity: 1; }
-        .hero-overlay { 
-            position: absolute; inset: 0; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)); 
-            z-index: 1; 
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1;
+            margin-bottom: 10px;
         }
-        
-        .hero-content { position: relative; z-index: 10; width: 100%; max-width: 32rem; color: #fff; }
-        .hero-tagline { text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; margin-bottom: 0.5rem; opacity: 0.9; }
-        .hero-names { font-size: 3rem; line-height: 1.1; margin-bottom: 0.5rem; }
-        .hero-date { font-size: 0.875rem; letter-spacing: 0.1em; margin-bottom: 2.5rem; opacity: 0.8; font-weight: 300; }
-        
-        .countdown-container { display: flex; gap: 0.5rem; }
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            width: 60px; height: 60px;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            border-radius: 8px;
+
+        .date-text {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
         }
-        
-        /* --- COUPLE SECTION --- */
-        .couple-section {
-            position: relative;
-            padding: 5rem 0;
-            background-color: #f4f4f2;
+
+        /* Countdown Container */
+        .save-the-date {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
             text-align: center;
-            overflow: hidden;
+            width: 100%;
+            margin-left: -15px;
         }
-        
-        .pattern-overlay {
-            position: absolute; inset: 0; opacity: 0.05; pointer-events: none;
-            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+
+        .countdown {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            width: 100%;
+            margin-left: -15px;
         }
-        
-        .vertical-line { width: 1px; height: 50px; background: #a8a29e; margin: 2rem auto; }
-        
-        .couple-grid {
-            display: flex; flex-direction: column; 
-            align-items: center; justify-content: center;
-            gap: 4rem; padding: 0 1.5rem;
+
+        .timer-box {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 10px;
+            border-radius: 5px;
+            min-width: 65px;
+            text-align: center;
         }
-        
-        .arch-frame {
-            width: 260px; height: 350px;
-            border-radius: 130px 130px 0 0;
-            overflow: hidden; border: 6px solid #fff;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+        .timer-box span {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
-        .arch-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
-        .couple-card:hover .arch-frame img { transform: scale(1.1); }
-        
-        /* --- EVENT SECTION --- */
-        .event-section {
-            position: relative; min-height: 100vh; width: 100%;
-            padding: 6rem 0; display: flex; align-items: center;
-            justify-content: center; color: #fff; text-align: center;
+
+        .timer-box small {
+            font-size: 0.6rem;
+            text-transform: capitalize;
         }
-        
-        .event-bg-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(4px); z-index: 0; }
-        .event-overlay { position: absolute; inset: 0; background-color: rgba(0,0,0,0.6); z-index: 1; }
-        
-        .event-content-wrapper { position: relative; z-index: 10; width: 100%; padding: 0 1.5rem; }
-        
-        .title-line { height: 1px; width: 2.5rem; background-color: rgba(255,255,255,0.4); }
-        .event-main-title { font-size: 3rem; font-style: italic; }
-        
-        .btn-maps {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.75rem 1.5rem; border-radius: 9999px;
-            background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);
-            backdrop-filter: blur(10px); color: #fff; text-decoration: none;
-            transition: all 0.3s; margin-top: 1.5rem;
+
+        /* Music Button */
+        .music-btn {
+            position: absolute;
+            right: 20px;
+            bottom: 180px;
+            background: white;
+            color: black;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer; /* Indikasi bisa diklik */
         }
-        .btn-maps:hover { background: #fff; color: #000; }
-        
-        /* --- NAVIGATION --- */
+
+        /* Bottom Navigation */
         .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            height: 75px; background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(20px); display: flex;
-            justify-content: space-around; align-items: center;
-            z-index: 100; border-top: 1px solid rgba(255,255,255,0.1);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(80, 80, 80, 0.9);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            z-index: 1000;
         }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #fff; text-decoration: none; opacity: 0.6; font-size: 10px; transition: 0.3s; }
-        .nav-item:hover { opacity: 1; }
+
+        .nav-item {
+            text-align: center;
+            color: #ddd;
+            text-decoration: none;
+            font-size: 0.7rem;
+            flex: 1;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-item:last-child {
+            border-right: none;
+        }
+
+        .nav-item i {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .footer-link {
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            z-index: 10;
+        }
     </style>
 </head>
-<body class="no-scrollbar">
+<body>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="hero-section">
-        <div class="slideshow-container">
-            <div class="slide active" style="background-image: url('Images/G-4.PNG');"></div>
-            <div class="slide" style="background-image: url('Images/G-5.PNG');"></div>
-            <div class="hero-overlay"></div>
+    <!-- --- Bagian Slideshow Background --- -->
+    <div class="slideshow-container">
+        <div class="slideshow-overlay"></div>
+        <!-- Ganti URL_FOTO_X_DISINI dengan link foto Anda -->
+        <div class="slide active" style="background-image: url('Images/G-2.png');"></div>
+        <div class="slide" style="background-image: url('Images/G-4.png');"></div>
+        <div class="slide" style="background-image: url('Images/G-3.png');"></div>
+    </div>
+    <!-- --------------------------------- -->
+
+    <section class="hero">
+        <div class="hero-text">
+            <p>The Wedding Of</p>
+            <h1>Hafis &<br>Amelia</h1>
+            <p class="date-text">Rabu, 3 Desember 2025</p>
         </div>
-        <div class="hero-content">
-            <p class="hero-tagline font-sans">The Wedding Of</p>
-            <h1 class="hero-names font-serif">Hafis &<br>Amelia</h1>
-            <p class="hero-date font-sans font-light">Rabu, 3 Desember 2025</p>
-            <div class="countdown-container font-sans">
-                <div class="countdown-item"><span id="days">00</span><small>Days</small></div>
-                <div class="countdown-item"><span id="hours">00</span><small>Hrs</small></div>
-                <div class="countdown-item"><span id="minutes">00</span><small>Min</small></div>
-                <div class="countdown-item"><span id="seconds">00</span><small>Sec</small></div>
+
+        <p class="save-the-date">Save The Date</p>
+        
+        <div class="countdown">
+            <div class="timer-box">
+                <span id="days">00</span>
+                <small>Days</small>
+            </div>
+            <div class="timer-box">
+                <span id="hours">00</span>
+                <small>Hours</small>
+            </div>
+            <div class="timer-box">
+                <span id="minutes">00</span>
+                <small>Minutes</small>
+            </div>
+            <div class="timer-box">
+                <span id="seconds">00</span>
+                <small>Seconds</small>
             </div>
         </div>
+
+        <div class="music-btn" id="playMusic">
+            <i class="fa-solid fa-play"></i>
+        </div>
+        <!-- Tambahkan audio di sini jika ingin fungsionalitas musik -->
+        <!-- <audio id="weddingMusic" loop src="URL_MUSIK_ANDA_DISINI"></audio> -->
     </section>
 
-    <!-- COUPLE SECTION -->
-    <section id="couple" class="couple-section">
-        <div class="pattern-overlay"></div>
-        <div class="couple-header">
-            <h2 class="font-serif" style="font-size: 5rem; color: #ccc; opacity: 0.4;">H/A</h2>
-            <p class="font-sans" style="font-size: 14px; color: #666; max-width: 300px; margin: 0 auto;">Kami mengundang Anda untuk merayakan kebahagiaan kami.</p>
-            <div class="vertical-line"></div>
-        </div>
-        <div class="couple-grid">
-            <div class="couple-card">
-                <div class="arch-frame"><img src="Images/G-Pria.PNG" alt="Hafis"></div>
-                <h3 class="font-serif" style="font-size: 2rem; margin-top: 1rem;">Hafis</h3>
-                <p class="font-sans" style="font-size: 10px; letter-spacing: 2px; color: #888;">M. HAFIS AL-FARUQI</p>
-            </div>
-            <div class="couple-card">
-                <div class="arch-frame"><img src="Images/G-Wanita.PNG" alt="Amelia"></div>
-                <h3 class="font-serif" style="font-size: 2rem; margin-top: 1rem;">Amelia</h3>
-                <p class="font-sans" style="font-size: 10px; letter-spacing: 2px; color: #888;">AMELIA PUTRI, S.KOM</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- EVENT SECTION -->
-    <section id="event" class="event-section">
-        <img src="Images/G-6.PNG" class="event-bg-image" alt="bg">
-        <div class="event-overlay"></div>
-        <div class="event-content-wrapper">
-            <div class="event-header">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-                    <div class="title-line"></div>
-                    <h2 class="event-main-title font-serif">Wedding</h2>
-                    <div class="title-line"></div>
-                </div>
-                <p class="font-serif" style="font-size: 1.5rem; opacity: 0.8;">Event</p>
-            </div>
-            <div class="event-card font-sans">
-                <h3 class="font-serif" style="font-size: 1.8rem;">Resepsi</h3>
-                <p style="font-style: italic; opacity: 0.7;">Rabu</p>
-                <p style="font-size: 4rem; font-weight: bold; margin: 10px 0;">03</p>
-                <p style="letter-spacing: 4px; text-transform: uppercase; font-size: 12px;">Desember 2025</p>
-                <a href="#" class="btn-maps">Google Map</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- NAVIGATION -->
-    <nav class="bottom-nav font-sans">
-        <a href="#home" class="nav-item"><span>Cover</span></a>
-        <a href="#couple" class="nav-item"><span>Couple</span></a>
-        <a href="#event" class="nav-item"><span>Event</span></a>
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item">
+            <i class="fa-regular fa-envelope-open"></i>
+            Cover
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-ring"></i>
+            Couple
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-regular fa-calendar-check"></i>
+            Event
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-regular fa-images"></i>
+            Gallery
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-regular fa-comment-dots"></i>
+            Wishes
+        </a>
     </nav>
 
     <script>
-// --- BACKGROUND SLIDESHOW ---
-        let currentSlide = 0;
+        // --- Script untuk Slideshow ---
         const slides = document.querySelectorAll('.slide');
-        
+        let currentSlide = 0;
+        const slideInterval = 5000; // Durasi per slide (ms), misalnya 5 detik
+
         function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
+            slides[currentSlide].classList.remove('active'); // Sembunyikan slide sekarang
+            currentSlide = (currentSlide + 1) % slides.length; // Hitung index slide berikutnya
+            slides[currentSlide].classList.add('active'); // Tampilkan slide berikutnya
         }
-        setInterval(nextSlide, 5000);
-        
-        // --- COUNTDOWN TIMER ---
-        function updateCountdown() {
-            const target = new Date("Dec 3, 2025 08:00:00").getTime();
+
+        // Jalankan slideshow secara otomatis
+        setInterval(nextSlide, slideInterval);
+        // ------------------------------
+
+        // Script sederhana untuk countdown (tetap sama)
+        const targetDate = new Date("Dec 3, 2025 08:00:00").getTime();
+
+        setInterval(() => {
             const now = new Date().getTime();
-            const diff = target - now;
-        
-            if (diff > 0) {
-                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-                document.getElementById('hours').innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                document.getElementById('minutes').innerText = Math.floor((diff / 1000 / 60) % 60);
-                document.getElementById('seconds').innerText = Math.floor((diff / 1000) % 60);m
+            const distance = targetDate - now;
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d < 10 ? "0"+d : (d < 0 ? "00" : d);
+            document.getElementById("hours").innerText = h < 10 ? "0"+h : (h < 0 ? "00" : h);
+            document.getElementById("minutes").innerText = m < 10 ? "0"+m : (m < 0 ? "00" : m);
+            document.getElementById("seconds").innerText = s < 10 ? "0"+s : (s < 0 ? "00" : s);
+        }, 1000);
+
+        // Contoh sederhana kontrol musik (perlu tag audio aktif)
+        /*
+        const musicBtn = document.getElementById('playMusic');
+        const audio = document.getElementById('weddingMusic');
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                musicBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+            } else {
+                audio.play().catch(error => {
+                    console.log("Autoplay dicegah oleh browser, perlu interaksi user.");
+                });
+                musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
             }
-        }
-        setInterval(updateCountdown, 1000);
-        
+            isPlaying = !isPlaying;
+        });
+        */
     </script>
+
 </body>
 </html>
