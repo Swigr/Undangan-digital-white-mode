@@ -135,7 +135,7 @@
             font-size: 0.6rem;
             text-transform: capitalize;
         }
-
+  
         /* Music Button */
         .music-btn {
             position: absolute;
@@ -397,6 +397,62 @@
     color: #cc0000;
 }
 
+/* Section Gallery */
+.gallery-section {
+    background-color: #f9f9f7; /* Senada dengan section couple */
+    padding: 60px 15px 120px; /* Padding bawah lebih besar untuk ruang navigasi */
+}
+
+/* Header Gallery di Pojok Kanan Atas */
+.gallery-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.gallery-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ccc;
+}
+
+.gallery-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-style: italic;
+    font-weight: 400;
+    color: #555;
+    margin: 0;
+}
+
+/* Grid Galeri 2 Kolom */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Membuat 2 kolom sejajar */
+    gap: 10px; /* Jarak antar foto */
+}
+
+.gallery-item {
+    width: 100%;
+    aspect-ratio: 3 / 4; /* Mengatur proporsi foto agar seragam */
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Efek zoom sederhana saat foto diklik/dihover */
+.gallery-item img:active {
+    transform: scale(1.1);
+}
+
+
         /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
@@ -586,6 +642,41 @@
         <a href="https://maps.google.com" target="_blank" class="btn-maps">
             <i class="fa-solid fa-location-dot"></i> Google Map
         </a>
+    </div>
+</section>
+
+<!-- Section Gallery -->
+<section class="gallery-section" id="gallery">
+    <div class="gallery-header">
+        <div class="gallery-line"></div>
+        <h2>Gallery</h2>
+    </div>
+
+    <div class="gallery-grid">
+        <!-- Foto 1 -->
+        <div class="gallery-item">
+            <img src="Images/G-1.PNG" alt="Wedding Photo 1">
+        </div>
+        <!-- Foto 2 -->
+        <div class="gallery-item">
+            <img src="Images/G-2.PNG" alt="Wedding Photo 2">
+        </div>
+        <!-- Foto 3 -->
+        <div class="gallery-item">
+            <img src="Images/G-3.PNG" alt="Wedding Photo 3">
+        </div>
+        <!-- Foto 4 -->
+        <div class="gallery-item">
+            <img src="Images/G-4.PNG" alt="Wedding Photo 4">
+        </div>
+        <!-- Foto 5 -->
+        <div class="gallery-item">
+            <img src="Images/G-5.PNG" alt="Wedding Photo 5">
+        </div>
+        <!-- Foto 6 -->
+        <div class="gallery-item">
+            <img src="Images/G-6.PNG" alt="Wedding Photo 6">
+        </div>
     </div>
 </section>
 
