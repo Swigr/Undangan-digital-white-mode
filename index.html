@@ -497,6 +497,48 @@
             border: 1px solid rgba(255,255,255,0.3);
             z-index: 10;
         }
+        
+/* --- CSS Lightbox --- */
+        .lightbox {
+            display: none; /* Sembunyi secara default */
+            position: fixed;
+            z-index: 2000; /* Di atas segalanya */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox.active img {
+            transform: scale(1);
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
     </style>
 </head>
 <body>
@@ -568,7 +610,7 @@
     </div>
 </div>
 
-<section class="couple-section">
+<section class="couple-section" id="mempelai">
     <div class="couple-logo">H/A</div>
     
     <p class="invitation-text">
@@ -655,27 +697,27 @@
     <div class="gallery-grid">
         <!-- Foto 1 -->
         <div class="gallery-item">
-            <img src="Images/G-1.PNG" alt="Wedding Photo 1">
+            <img src="Images/G-1.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 1">
         </div>
         <!-- Foto 2 -->
         <div class="gallery-item">
-            <img src="Images/G-2.PNG" alt="Wedding Photo 2">
+            <img src="Images/G-2.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 2">
         </div>
         <!-- Foto 3 -->
-        <div class="gallery-item">
-            <img src="Images/G-3.PNG" alt="Wedding Photo 3">
+        <div class="gallery-item"> 
+            <img src="Images/G-3.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 3">
         </div>
         <!-- Foto 4 -->
         <div class="gallery-item">
-            <img src="Images/G-4.PNG" alt="Wedding Photo 4">
+            <img src="Images/G-4.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 4">
         </div>
         <!-- Foto 5 -->
         <div class="gallery-item">
-            <img src="Images/G-5.PNG" alt="Wedding Photo 5">
+            <img src="Images/G-5.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 5">
         </div>
         <!-- Foto 6 -->
         <div class="gallery-item">
-            <img src="Images/G-6.PNG" alt="Wedding Photo 6">
+            <img src="Images/G-6.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 6">
         </div>
     </div>
 </section>
@@ -685,15 +727,15 @@
             <i class="fa-regular fa-envelope-open"></i>
             Cover
         </a>
-        <a href="#" class="nav-item">
+        <a href="#mempelai" class="nav-item">
             <i class="fa-solid fa-ring"></i>
             Couple
         </a>
-        <a href="#" class="nav-item">
+        <a href="#event" class="nav-item">
             <i class="fa-regular fa-calendar-check"></i>
             Event
         </a>
-        <a href="#" class="nav-item">
+        <a href="#gallery" class="nav-item">
             <i class="fa-regular fa-images"></i>
             Gallery
         </a>
@@ -756,7 +798,30 @@
             isPlaying = !isPlaying;
         });
         */
+// --- Script Lightbox ---
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+            // Mencegah scroll saat lightbox terbuka
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            // Mengembalikan scroll
+            document.body.style.overflow = 'auto';
+        }
+        
     </script>
+<!-- Struktur Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-img" src="" alt="Full Image">
+</div>
 
 </body>
 </html>
