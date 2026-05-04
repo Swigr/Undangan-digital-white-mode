@@ -26,7 +26,7 @@
 
         /* --- CSS untuk Slideshow Background --- */
         .slideshow-container {
-            position: scroll; /Menjaga background tetap di tempat */
+            position: fixed; /* Menjaga background tetap di tempat */
             top: 0;
             left: 0;
             width: 100%;
@@ -293,21 +293,24 @@
 /* Section Wedding Event */
 .event-section {
     position: relative;
-    padding: 80px 20px;
+    padding: 20px 15px;
     text-align: center;
     color: white;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('Images/bg-event.JPEG') no-repeat center center/cover;
-    background-attachment: fixed; /* Memberikan efek parallax halus */
+    background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), 
+                url('bg-event.JPEG') no-repeat center center/cover;
+    background-attachment: scroll; /* Memberikan efek parallax halus */
 }
 
 /* Header Wedding Event di Pojok Kiri Atas */
 .event-header {
     display: flex;
+    
     align-items: center; /* Menyejajarkan teks dan garis secara vertikal */
-    gap: 15px; /* Jarak antara teks dan garis */
+    gap: 10px; /* Jarak antara teks dan garis */
+    margin-top: 10px;
+    left: 0;
     margin-bottom: 50px;
-    padding-left: 10px; /* Jarak dari tepi kiri */
+    padding-left: -10px; /* Jarak dari tepi kiri */
 }
 
 .event-title-wrapper {
@@ -332,6 +335,8 @@
 
 /* Garis Horizontal yang memanjang ke kanan */
 .event-line {
+    
+    margin-top: -30px;
     flex-grow: 1; /* Membuat garis mengisi sisa ruang ke kanan */
     height: 1px;
     background-color: rgba(255, 255, 255, 0.6);
@@ -531,7 +536,7 @@
 
     <div class="mempelai-container">
         <div class="arch-frame">
-            <img src="Images/Wanita.PNG" alt="Mempelai Wanita">
+            <img src="Images/Wanita.png" alt="Mempelai Wanita">
         </div>
         <h2 class="mempelai-name">Siti Nurlailatul Amalia S.E</h2>
         <span class="mempelai-origin">Bogor</span>
