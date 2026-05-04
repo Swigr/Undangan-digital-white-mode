@@ -152,6 +152,245 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             cursor: pointer; /* Indikasi bisa diklik */
         }
+        
+/* Section Quotes & Gallery */
+        .content-section {
+            background-color: #4a4a4a; /* Warna background abu-abu sesuai referensi */
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .quotes-container i {
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+        }
+        
+        .quotes-text {
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .quotes-author {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 40px;
+            display: block;
+        }
+        
+        /* Mini Gallery Auto-Slide */
+        .gallery-slider {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        .slider-track {
+            display: flex;
+            width: calc(200px * 10); /* Sesuaikan dengan jumlah foto agar looping mulus */
+            animation: scrollRight 20s linear infinite;
+        }
+        
+        .slider-track img {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        /* Animasi Slide ke Kanan */
+        @keyframes scrollRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        
+        /* Penyesuaian agar body bisa di-scroll */
+        body {
+            overflow-y: auto;
+            height: auto;
+        }
+        
+/* Section Profil Mempelai */
+.couple-section {
+    background-color: #f9f9f7; /* Warna background krem sangat muda */
+    padding: 80px 20px;
+    text-align: center;
+    color: #444;
+}
+
+.couple-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #888;
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+}
+
+.invitation-text {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+.mempelai-container {
+    margin-bottom: 60px;
+}
+
+/* Bingkai Foto Melengkung (Arch) */
+.arch-frame {
+    width: 220px;
+    height: 300px;
+    margin: 0 auto 30px;
+    border-radius: 150px 150px 0 0; /* Membuat bentuk kubah/arch */
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.arch-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mempelai-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.mempelai-origin {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.mempelai-parents {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Garis Pembatas Vertikal */
+.divider-line {
+    width: 1px;
+    height: 60px;
+    background-color: #ccc;
+    margin: 30px auto;
+}
+
+/* Section Wedding Event */
+.event-section {
+    position: relative;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('bg-event.JPEG') no-repeat center center/cover;
+    background-attachment: fixed; /* Memberikan efek parallax halus */
+}
+
+/* Header Wedding Event di Pojok Kiri Atas */
+.event-header {
+    display: flex;
+    align-items: center; /* Menyejajarkan teks dan garis secara vertikal */
+    gap: 15px; /* Jarak antara teks dan garis */
+    margin-bottom: 50px;
+    padding-left: 10px; /* Jarak dari tepi kiri */
+}
+
+.event-title-wrapper {
+    text-align: left;
+}
+
+.event-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    line-height: 1;
+    margin: 0;
+    font-weight: 400;
+}
+
+.event-header .event-script {
+    font-family: 'Dancing Script', cursive; /* Pastikan font ini di-import jika ingin gaya tulisan tangan */
+    font-size: 2.5rem;
+    display: block;
+    margin-top: -10px;
+    font-weight: 300;
+}
+
+/* Garis Horizontal yang memanjang ke kanan */
+.event-line {
+    flex-grow: 1; /* Membuat garis mengisi sisa ruang ke kanan */
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.event-card {
+    margin-bottom: 60px;
+}
+
+.event-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.event-day {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.event-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    line-height: 1;
+    margin: 10px 0;
+}
+
+.event-year {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.event-details {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.event-details i {
+    margin-right: 8px;
+}
+
+.btn-maps {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 25px;
+    background-color: white;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-maps i {
+    margin-right: 8px;
+    color: #cc0000;
+}
 
         /* Bottom Navigation */
         .bottom-nav {
@@ -239,7 +478,111 @@
             </div>
         </div>
         </section>
+<!-- Section Pembukaan Quotes & Mini Gallery -->
+<div class="content-section">
+    <div class="quotes-container">
+        <i class="fa-solid fa-quote-right"></i>
+        <p class="quotes-text">
+            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+        </p>
+        <span class="quotes-author">(QS. Ar-Rum: 21)</span>
+    </div>
 
+    <!-- Mini Gallery Slider -->
+    <div class="gallery-slider">
+        <div class="slider-track">
+            <!-- Foto 1-5 (Duplikasi foto agar loop tidak terputus) -->
+            <img src="Images/G-1.PNG" alt="Gallery 1">
+            <img src="Images/G-2.PNG" alt="Gallery 2">
+            <img src="Images/G-3.PNG" alt="Gallery 3">
+            <img src="Images/G-4.PNG" alt="Gallery 4">
+            <img src="Images/G-5.PNG" alt="Gallery 5">
+            <!-- Duplikasi untuk looping mulus -->
+              <img src="Images/G-1.PNG" alt="Gallery 1">
+                       <img src="Images/G-2.PNG" alt="Gallery 2">
+                       <img src="Images/G-3.PNG" alt="Gallery 3">
+                       <img src="Images/G-4.PNG" alt="Gallery 4">
+                       <img src="Images/G-5.PNG" alt="Gallery 5">
+        </div>
+    </div>
+</div>
+
+<section class="couple-section">
+    <div class="couple-logo">H/A</div>
+    
+    <p class="invitation-text">
+        Tanpa mengurangi rasa hormat, dengan ini kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami
+    </p>
+
+    <div class="divider-line"></div>
+
+    <div class="mempelai-container">
+        <div class="arch-frame">
+            <img src="Images/Pria.PNG" alt="Mempelai Pria">
+        </div>
+        <h2 class="mempelai-name">Muhammad Hafis</h2>
+        <span class="mempelai-origin">Padang</span>
+        <p class="mempelai-parents">
+            Putra Pertama dari Bapak Muhammad Hanafiah &<br>Ibu Yurnida
+        </p>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <div class="mempelai-container">
+        <div class="arch-frame">
+            <img src="Images/Wanita.png" alt="Mempelai Wanita">
+        </div>
+        <h2 class="mempelai-name">Siti Nurlailatul Amalia S.E</h2>
+        <span class="mempelai-origin">Bogor</span>
+        <p class="mempelai-parents">
+            Putri Pertama dari Bapak A. Somad &<br>Ibu Siti Aisah
+        </p>
+    </div>
+</section>
+
+<!-- Section Wedding Event -->
+<section class="event-section" id="event">
+    <div class="event-header">
+        <div class="event-title-wrapper">
+            <h2>Wedding</h2>
+            <span class="event-script">Event</span>
+        </div>
+        <div class="event-line"></div>
+    </div>
+    <!-- Akad Nikah -->
+    <div class="event-card">
+        <h3 class="event-title">Akad Telah di<br>Laksanakan</h3>
+        <p class="event-day">Minggu</p>
+        <div class="event-date">26</div>
+        <p class="event-year">Oktober, 2025</p>
+        
+        <div class="event-details">
+            <p><i class="fa-regular fa-clock"></i> 09.00 WIB</p>
+            <p><strong>Kediaman Mempelai Wanita</strong></p>
+            <p>Kp. Pasir Eurih RT.02/RW.02 Cinangka Kec. Ciampea Kab.Bogor</p>
+        </div>
+    </div>
+
+    <!-- Resepsi -->
+    <div class="event-card">
+        <h3 class="event-title">Resepsi</h3>
+        <p class="event-day">Rabu</p>
+        <div class="event-date">03</div>
+        <p class="event-year">Desember, 2025</p>
+        
+        <div class="event-details">
+            <p><i class="fa-regular fa-clock"></i> 08.00 s/d Selesai</p>
+            <p><strong>Kediaman Mempelai Pria</strong></p>
+            <p>Sungai Geringging, Padang Tarok Kab.Padang Pariaman</p>
+        </div>
+
+        <!-- Tombol Google Maps -->
+        <a href="https://maps.google.com" target="_blank" class="btn-maps">
+            <i class="fa-solid fa-location-dot"></i> Google Map
+        </a>
+    </div>
+</section>
 
     <nav class="bottom-nav">
         <a href="#" class="nav-item">
