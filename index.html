@@ -18,6 +18,9 @@
             padding: 0;
             box-sizing: border-box;
         }
+		html {
+    scroll-behavior: smooth;
+}
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -918,6 +921,14 @@
             border: 1px solid rgba(255,255,255,0.3);
             z-index: 10;
         }
+		/* Opsional: Tambahkan efek transisi pada tombol saat ditekan */
+.nav-link {
+    transition: all 0.3s ease;
+}
+
+.nav-link:active {
+    transform: scale(0.9); /* Efek sedikit mengecil saat diklik */
+}
         
 /* --- CSS Lightbox --- */
         .lightbox {
@@ -975,15 +986,15 @@
     <!-- --------------------------------- -->
 
     <section class="hero">
-        <div class="hero-text" data-aos="fade-right">
-            <p>The Wedding Of</p>
-            <h1>Hafis &<br>Amelia</h1>
-            <p class="date-text">Rabu, 30 Juli 2026</p>
+        <div class="hero-text">
+            <p data-aos="fade-right" data-aos-delay="200">The Wedding Of</p>
+            <h1 data-aos="fade-right" data-aos-delay="400">Hafis &<br>Amelia</h1>
+            <p class="date-text" data-aos="fade-right" data-aos-delay="600">Rabu, 30 Juli 2026</p>
         </div>
 
-        <p class="save-the-date" data-aos="fade-up">Save The Date</p>
+        <p class="save-the-date" data-aos="fade-up" data-aos-delay="800">Save The Date</p>
         
-        <div class="countdown" data-aos="fade-up">
+        <div class="countdown" data-aos="fade-up" data-aos-delay="1000">
             <div class="timer-box">
                 <span id="days">00</span>
                 <small>Days</small>
@@ -1228,7 +1239,7 @@
         <hr style="width: 80%; border: 0.5px solid #eee; margin: 30px auto;">
 
         <!-- Rekening 1 -->
-        <div class="bank-card">
+        <div class="bank-card" data-aos="fade-up" data-aos-delay="100">
             <div class="bank-name">SEABANK</div>
             <div class="account-name">SITI NURLAILATUL AMALIAH</div>
             <div class="account-number" id="rek1">901840977097</div>
@@ -1236,7 +1247,7 @@
         </div>
 
         <!-- Rekening 2 -->
-        <div class="bank-card">
+        <div class="bank-card" data-aos="fade-up" data-aos-delay="300">
             <div class="bank-name">BRI</div>
             <div class="account-name">MHD ANAFIS</div>
             <div class="account-number" id="rek2">080801078363531</div>
@@ -1258,7 +1269,7 @@
 <section class="wishes-section" id="wishes">
     <h2>Friends Wishes</h2>
 
-    <div class="wishes-form">
+    <div class="wishes-form" data-aos="zoom-in">
         <form id="guestbook-form">
             <textarea id="guest-message" placeholder="Ucapan Selamat & doa" required></textarea>
             <div style="position: relative;">
@@ -1275,7 +1286,7 @@
         
         <div id="wishes-container">
             <!-- Data dari Firebase akan muncul di sini -->
-            <div class="wish-item">
+            <div class="wish-item" data-aos="fade-right">
                 <span class="wish-name">Bg Riki & Istri</span>
                 <span class="wish-time">🕒 6 months Yang Lalu</span>
                 <p class="wish-text">SLAMAT MENEMPUH HIDUP BARU..SAMAWA LANGGENG SAMPE KAKEK NENEK..</p>
@@ -1291,13 +1302,13 @@
 </section>
 <!-- Section Closing -->
 <section class="closing-section" id="closing">
-    <div class="closing-content">
+    <div class="closing-content" data-aos="fade-up">
         <p class="closing-text">
             Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do'a restu kepada kedua mempelai.
         </p>
         
-        <p class="closing-title">The Wedding of</p>
-        <h2 class="closing-names">Hafis & Amelia</h2>
+        <p class="closing-title" data-aos="fade-up" data-aos-delay="200">The Wedding of</p>
+        <h2 class="closing-names" data-aos="fade-up" data-aos-delay="400">Hafis & Amelia</h2>
     </div>
 </section>
 
@@ -1490,7 +1501,34 @@ function toggleGift() {
                 container.insertAdjacentHTML('afterbegin', html);
             });
         });
-        
+        document.querySelectorAll('.navbar a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault(); // Mencegah pindah seketika
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            // Memberikan sedikit jeda (misal: 300ms) agar terasa lebih premium
+            setTimeout(() => {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70, // Sesuaikan angka 70 dengan tinggi navbar Anda
+                    behavior: 'smooth'
+                });
+            }, 300); // 300ms delay
+        }
+    });
+});
+
+setTimeout(() => {
+    window.scrollTo({
+        top: targetElement.offsetTop - 70,
+        behavior: 'smooth'
+    });
+    
+    // Refresh AOS agar mendeteksi posisi baru setelah scroll
+    AOS.refresh(); 
+}, 300);
     </script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
