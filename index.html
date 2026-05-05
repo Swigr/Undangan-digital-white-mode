@@ -512,6 +512,82 @@
     color: black;
 }
 
+/* Section Konfirmasi Kehadiran */
+.rsvp-section {
+    background-color: #c4c4c4; /* Warna abu-abu sesuai referensi */
+    padding: 60px 20px;
+    text-align: center;
+    color: #4a4a4a;
+}
+
+.rsvp-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.rsvp-section p {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Form Styling */
+.rsvp-form {
+    max-width: 450px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.rsvp-form label {
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.rsvp-form input, 
+.rsvp-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+}
+
+/* Tombol Kirim */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #333; /* Warna gelap sesuai gambar */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #000;
+}
+
+
         /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
@@ -796,7 +872,7 @@
     <!-- Bagian Foto Arch (Referensi image_10.png) -->
     <div class="story-image-container">
         <div class="arch-frame-story">
-            <img src="Images/Story.jpg" alt="Hafis and Amelia">
+            <img src="Story.jpg" alt="Hafis and Amelia">
         </div>
     </div>
 
@@ -828,6 +904,30 @@
     </div>
 </section>
 
+<!-- Section Konfirmasi Kehadiran -->
+<section class="rsvp-section" id="rsvp">
+    <h2>Konfirmasi Kehadiran</h2>
+    <p>Mohon kesediaannya untuk melakukan konfirmasi kehadiran, supaya kami bisa mempersiapkan kehadiran anda dengan baik.</p>
+
+   <form class="rsvp-form" id="form-rsvp">
+        <div class="form-group">
+            <input type="text" name="nama" placeholder="Nama Lengkap" required>
+        </div>
+        <div class="form-row">
+            <div class="form-group" style="flex: 2;">
+                <select name="kehadiran">
+                    <option value="Hadir">Hadir</option>
+                    <option value="Belum Bisa Hadir">Belum Bisa Hadir</option>
+                </select>
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <input type="number" name="jumlah" value="1" min="1">
+            </div>
+        </div>
+        <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
+    </form>
+    
+</section>
 
     <nav class="bottom-nav">
         <a href="#" class="nav-item">
@@ -914,13 +1014,42 @@
             // Mencegah scroll saat lightbox terbuka
             document.body.style.overflow = 'hidden';
         }
-        
+          
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.remove('active');
             // Mengembalikan scroll
             document.body.style.overflow = 'auto';
         }
+         // Konfirmasikehadiran to spreadsheet
+const scriptURL = 'TEMPEL_URL_WEB_APP_ANDA_DISINI';
+        const form = document.getElementById('form-rsvp');
+        
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          
+          // Ubah teks tombol saat loading
+          const submitBtn = form.querySelector('.btn-submit');
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = "Mengirim...";
+        
+          fetch(scriptURL, { 
+            method: 'POST', 
+            body: new FormData(form)
+          })
+          .then(response => {
+            alert('Konfirmasi kehadiran berhasil terkirim!');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "Kirim Konfirmasi";
+            form.reset();
+          })
+          .catch(error => {
+            console.error('Error!', error.message);
+            alert('Terjadi kesalahan, silakan coba lagi.');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "Kirim Konfirmasi";
+          });
+        });
         
     </script>
 </body>
