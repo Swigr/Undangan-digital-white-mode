@@ -587,6 +587,196 @@
     background-color: #000;
 }
 
+/* Section Wedding Gift */
+.gift-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.gift-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+}
+
+.gift-section p {
+    font-size: 0.9rem;
+    color: #666;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+/* Tombol Kirim Hadiah */
+.btn-gift {
+    background-color: #b08d48; /* Warna emas kecokelatan sesuai gambar */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+/* Container Rekening (Sembunyi secara default) */
+#gift-container {
+    display: none;
+    margin-top: 40px;
+    animation: fadeIn 0.5s ease;
+}
+
+.bank-card {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    max-width: 350px;
+    margin: 0 auto 20px;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.bank-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: right;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.account-name {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.account-number {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.btn-copy {
+    background-color: #8c9bad;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Section Friends Wishes */
+.wishes-section {
+    background-color: #f8f8f8;
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* Efek tekstur kertas halus */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.wishes-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #5a5a7a; /* Warna keunguan lembut sesuai gambar */
+    margin-bottom: 30px;
+}
+
+/* Form Ucapan */
+.wishes-form {
+    max-width: 450px;
+    margin: 0 auto 50px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.wishes-form textarea, 
+.wishes-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+
+.wishes-form textarea {
+    height: 100px;
+    resize: none;
+}
+
+.btn-send {
+    float: right;
+    background-color: transparent;
+    color: #d19275; /* Warna peach/salmon sesuai tombol Kirim */
+    border: 1px solid #d19275;
+    padding: 8px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-send:hover {
+    background-color: #d19275;
+    color: white;
+}
+
+/* List Ucapan */
+.wishes-display {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.wishes-count {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.wish-item {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.wish-name {
+    color: #d19275; /* Warna nama pemberi ucapan */
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.wish-time {
+    font-size: 0.75rem;
+    color: #999;
+    margin-left: 10px;
+}
+
+.wish-text {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.5;
+}
+
 
         /* Bottom Navigation */
         .bottom-nav {
@@ -872,7 +1062,7 @@
     <!-- Bagian Foto Arch (Referensi image_10.png) -->
     <div class="story-image-container">
         <div class="arch-frame-story">
-            <img src="Story.jpg" alt="Hafis and Amelia">
+            <img src="Images/Story.jpg" alt="Hafis and Amelia">
         </div>
     </div>
 
@@ -926,7 +1116,82 @@
         </div>
         <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
     </form>
-    
+</section>
+
+<section class="gift-section" id="gift">
+    <h2>Wedding Gift</h2>
+    <p>Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado melalui:</p>
+
+    <!-- Tombol Utama -->
+    <button class="btn-gift" onclick="toggleGift()">
+        <i class="fas fa-gift"></i> Kirim Hadiah
+    </button>
+
+    <!-- Konten Rekening (Muncul saat diklik) -->
+    <div id="gift-container">
+        <hr style="width: 80%; border: 0.5px solid #eee; margin: 30px auto;">
+
+        <!-- Rekening 1 -->
+        <div class="bank-card">
+            <div class="bank-name">SEABANK</div>
+            <div class="account-name">SITI NURLAILATUL AMALIAH</div>
+            <div class="account-number" id="rek1">901840977097</div>
+            <button class="btn-copy" onclick="copyText('rek1')">📋 Salin Rekening</button>
+        </div>
+
+        <!-- Rekening 2 -->
+        <div class="bank-card">
+            <div class="bank-name">BRI</div>
+            <div class="account-name">MHD ANAFIS</div>
+            <div class="account-number" id="rek2">080801078363531</div>
+            <button class="btn-copy" onclick="copyText('rek2')">📋 Salin Rekening</button>
+        </div>
+
+        <!-- Alamat Pengiriman -->
+        <div class="bank-card" style="background: white; border: 1px solid #eee;">
+            <div style="text-align: center; font-size: 2rem; margin-bottom: 10px;">🏠</div>
+            <div style="text-align: center; font-size: 0.9rem; color: #666;" id="alamat">
+                Sungai Geringging Padang tarok Kab. Padang Pariaman
+            </div>
+            <div style="text-align: center; margin-top: 15px;">
+                <button class="btn-copy" onclick="copyText('alamat')">📋 Salin Alamat</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wishes-section" id="wishes">
+    <h2>Friends Wishes</h2>
+
+    <div class="wishes-form">
+        <form id="guestbook-form">
+            <textarea id="guest-message" placeholder="Ucapan Selamat & doa" required></textarea>
+            <div style="position: relative;">
+                <input type="text" id="guest-name" placeholder="Nama*" required style="padding-left: 35px;">
+                <span style="position: absolute; left: 12px; top: 12px; color: #aaa;"><i class="fas fa-user"></i></span>
+            </div>
+            <button type="submit" class="btn-send">Kirim</button>
+            <div style="clear: both;"></div>
+        </form>
+    </div>
+
+    <div class="wishes-display">
+        <div class="wishes-count">22 Best Friends Wishes</div>
+        
+        <div id="wishes-container">
+            <!-- Data dari Firebase akan muncul di sini -->
+            <div class="wish-item">
+                <span class="wish-name">Bg Riki & Istri</span>
+                <span class="wish-time">🕒 6 months Yang Lalu</span>
+                <p class="wish-text">SLAMAT MENEMPUH HIDUP BARU..SAMAWA LANGGENG SAMPE KAKEK NENEK..</p>
+            </div>
+            
+            <div class="wish-item">
+                <span class="wish-name">Sela&suami</span>
+                <span class="wish-time">🕒 6 months Yang Lalu</span>
+                <p class="wish-text">Happy wedding amel🥰 maaf ga bisa dateng soalnya ga bisa ambil libur di weekend🙏</p>
+            </div>
+        </div>
+    </div>
 </section>
 
     <nav class="bottom-nav">
@@ -1049,6 +1314,62 @@ const scriptURL = 'TEMPEL_URL_WEB_APP_ANDA_DISINI';
             submitBtn.disabled = false;
             submitBtn.innerHTML = "Kirim Konfirmasi";
           });
+        });
+        
+        
+function toggleGift() {
+            const container = document.getElementById('gift-container');
+            if (container.style.display === 'block') {
+                container.style.display = 'none';
+            } else {
+                container.style.display = 'block';
+                container.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        function copyText(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Berhasil disalin: " + text);
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+            });
+        }
+        
+// Asumsi Anda sudah menginisialisasi Firebase di project Anda
+        const db = firebase.database();
+        
+        // Fungsi Mengirim Ucapan
+        document.getElementById('guestbook-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('guest-name').value;
+            const message = document.getElementById('guest-message').value;
+        
+            db.ref('wishes').push({
+                nama: name,
+                ucapan: message,
+                timestamp: Date.now()
+            }).then(() => {
+                document.getElementById('guestbook-form').reset();
+            });
+        });
+        
+        // Fungsi Menampilkan Ucapan (Real-time)
+        db.ref('wishes').on('value', (snapshot) => {
+            const container = document.getElementById('wishes-container');
+            container.innerHTML = ''; // Kosongkan kontainer sebelum update
+            
+            snapshot.forEach((childSnapshot) => {
+                const data = childSnapshot.val();
+                const html = `
+                    <div class="wish-item">
+                        <span class="wish-name"></span>
+                        <span class="wish-time">🕒 Baru saja</span>
+                        <p class="wish-text"></p>
+                    </div>
+                `;
+                container.insertAdjacentHTML('afterbegin', html);
+            });
         });
         
     </script>
