@@ -776,7 +776,92 @@
     color: #444;
     line-height: 1.5;
 }
+/* Section Closing */
+.closing-section {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Teks berada di area bawah foto */
+    align-items: center;
+    text-align: center;
+    background: url('URL_FOTO_PASANGAN_TERAKHIR.jpg') no-repeat center center;
+    background-size: cover;
+    padding-bottom: 80px;
+    color: #4a4a4a;
+}
 
+/* Overlay Putih Transparan (Gradient) agar teks terbaca jelas */
+.closing-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.9) 70%, rgba(255,255,255,1) 100%);
+    z-index: 1;
+}
+
+.closing-content {
+    position: relative;
+    z-index: 2; /* Di atas overlay */
+    padding: 0 30px;
+    max-width: 600px;
+}
+
+.closing-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.closing-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: #888;
+}
+
+.closing-names {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-style: italic;
+    font-weight: 400;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+/* Footer Utama */
+.main-footer {
+    background-color: #4a4a4a; /* Warna gelap sesuai referensi */
+    padding: 50px 20px 120px; /* Padding bawah ekstra untuk ruang bottom nav */
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+}
+
+.footer-logo {
+    width: 80px; /* Sesuaikan ukuran logo */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.footer-copyright {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+.footer-copyright a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+}
 
         /* Bottom Navigation */
         .bottom-nav {
@@ -1193,6 +1278,29 @@
         </div>
     </div>
 </section>
+<!-- Section Closing -->
+<section class="closing-section" id="closing">
+    <div class="closing-content">
+        <p class="closing-text">
+            Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do'a restu kepada kedua mempelai.
+        </p>
+        
+        <p class="closing-title">The Wedding of</p>
+        <h2 class="closing-names">Hafis & Amelia</h2>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="main-footer">
+    <!-- Logo Melingkar (Gunakan gambar ring/logo Anda) -->
+    <img src="path_to_logo_rings.png" alt="Logo Rings" class="footer-logo">
+
+    <!-- Teks Hak Cipta -->
+    <div class="footer-copyright">
+        © 2026 Made With Love by<br>
+        <a href="https://sr-invitation.my.id">sr-invitation</a>
+    </div>
+</footer>
 
     <nav class="bottom-nav">
         <a href="#" class="nav-item">
@@ -1211,7 +1319,7 @@
             <i class="fa-regular fa-images"></i>
             Gallery
         </a>
-        <a href="#" class="nav-item">
+        <a href="#wishes" class="nav-item">
             <i class="fa-regular fa-comment-dots"></i>
             Wishes
         </a>
