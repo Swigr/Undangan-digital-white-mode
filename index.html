@@ -452,6 +452,65 @@
     transform: scale(1.1);
 }
 
+/* Container Utama Love Story */
+.love-story-wrapper {
+    background-color: #ffffff;
+    padding: 60px 0;
+}
+
+/* Bagian Judul Nama & Story */
+.story-intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.story-names {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #4a4a4a;
+    margin: 0;
+    font-weight: 400;
+}
+
+.story-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #4a4a4a;
+    display: block;
+    margin-top: -15px; /* Menumpuk sedikit dengan nama atas */
+}
+
+/* Bingkai Foto Melengkung (Arch) */
+.story-image-container {
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+
+.arch-frame-story {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    /* Membuat bentuk melengkung di kiri atas */
+    border-top-left-radius: 200px; 
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.arch-frame-story img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Membuat foto menjadi Hitam Putih seperti referensi */
+    filter: grayscale(100%); 
+}
+.story-content{
+    padding: 0 20px;
+    text-align: center;
+    color: black;
+}
 
         /* Bottom Navigation */
         .bottom-nav {
@@ -721,6 +780,54 @@
         </div>
     </div>
 </section>
+<!-- Struktur Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-img" src="" alt="Full Image">
+</div>
+
+<section class="love-story-wrapper" id="story">
+    <!-- Bagian Nama & Story (Referensi image_10.png) -->
+    <div class="story-intro">
+        <h1 class="story-names">Hafis & Amelia</h1>
+        <span class="story-label">Story</span>
+    </div>
+
+    <!-- Bagian Foto Arch (Referensi image_10.png) -->
+    <div class="story-image-container">
+        <div class="arch-frame-story">
+            <img src="Story.jpg" alt="Hafis and Amelia">
+        </div>
+    </div>
+
+    <!-- Bagian Teks Cerita (Referensi image_8.png & image_9.png) -->
+    <div class="story-section">
+        <div class="story-header">
+            <h2>LOVE STORY</h2>
+        </div>
+
+        <div class="story-content">
+            <p>Pertemuan kami berawal dari tempat kerja. Kami dipertemukan secara tidak terduga sepertinya semesta memang sengaja merangkainya,</p>
+            
+            <p>dari tatap yang tak sengaja, tumbuhlah percakapan sederhana, dari pertemanan, hadir kenyamanan.</p>
+
+            <p>singkat cerita kami saling komunikasi, perasaan yang awalnya samar perlahan tumbuh menjadi nyata, hingga akhirnya kami memutuskan untuk menjalin hubungan. Namun takdir sempat memisahkan kami tetapi takdir pula yang menyatukan kami kembali.</p>
+
+            <p>Sampai akhirnya kami kembali dan saling meyakinkan, bersama kami belajar, tumbuh dan saling menguatkan dalam setiap proses yang kami jalani.</p>
+
+            <p>Hingga pada <strong>27 September 2025</strong> kami memutuskan mengikat hubungan yang disaksikan oleh keluarga besar.</p>
+
+            <p>Hari ini dengan penuh syukur dan kebahagiaan, kami memulai babak baru. Bukan lagi sekedar “Aku” dan “Kamu”, tapi “Kita”.</p>
+
+            <p>Kami Percaya, bukan karna bertemu lalu berjodoh, melainkan karna berjodoh lah maka kami dipertemukan. Dan inilah kisah kami, yang kini berlanjut menjadi ikatan suci.</p>
+
+            <div class="quote-ali">
+                Sebagaimana yang pernah dikatakan oleh Ali Bin Abi Thalib “ Apa yang menjadi takdirmu akan menemukan jalannya untuk menemukanmu”.
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <nav class="bottom-nav">
         <a href="#" class="nav-item">
@@ -744,10 +851,6 @@
             Wishes
         </a>
     </nav>
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <span class="close-lightbox">&times;</span>
-    <img id="lightbox-img" src="" alt="Full Image">
-</div>
     <script>
         // --- Script untuk Slideshow ---
         const slides = document.querySelectorAll('.slide');
