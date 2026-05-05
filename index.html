@@ -8,8 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Font Awesome untuk Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">   
+   <style>
         * {
             margin: 0;
             padding: 0;
@@ -31,6 +34,8 @@
             left: 0;
             width: 100%;
             height: 100%;
+			 background-size: cover;
+            background-position: center;
             z-index: -1; /* Meletakkan slideshow di belakang konten */
             overflow: hidden;
         }
@@ -297,7 +302,7 @@
     text-align: center;
     color: white;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('Images/bg-event.JPEG') no-repeat center center/cover;
+                url('Images/bg-event.jpg') no-repeat center center/cover;
     background-attachment: scroll; /* Memberikan efek parallax halus */
 }
 
@@ -506,10 +511,16 @@
     /* Membuat foto menjadi Hitam Putih seperti referensi */
     filter: grayscale(100%); 
 }
+
+.story-header {
+	padding: 0 20px;
+	text-align: center;
+	color: #4a4a4a;
+}
 .story-content{
     padding: 0 20px;
     text-align: center;
-    color: black;
+    color: #4a4a4a;
 }
 
 /* Section Konfirmasi Kehadiran */
@@ -964,15 +975,15 @@
     <!-- --------------------------------- -->
 
     <section class="hero">
-        <div class="hero-text">
+        <div class="hero-text" data-aos="fade-right">
             <p>The Wedding Of</p>
             <h1>Hafis &<br>Amelia</h1>
-            <p class="date-text">Rabu, 3 Desember 2025</p>
+            <p class="date-text">Rabu, 30 Juli 2026</p>
         </div>
 
-        <p class="save-the-date">Save The Date</p>
+        <p class="save-the-date" data-aos="fade-up">Save The Date</p>
         
-        <div class="countdown">
+        <div class="countdown" data-aos="fade-up">
             <div class="timer-box">
                 <span id="days">00</span>
                 <small>Days</small>
@@ -993,7 +1004,7 @@
         </section>
 <!-- Section Pembukaan Quotes & Mini Gallery -->
 <div class="content-section">
-    <div class="quotes-container">
+    <div class="quotes-container" data-aos="fade-up">
         <i class="fa-solid fa-quote-right"></i>
         <p class="quotes-text">
             "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
@@ -1021,34 +1032,34 @@
 </div>
 
 <section class="couple-section" id="mempelai">
-    <div class="couple-logo">H/A</div>
+    <div class="couple-logo" data-aos="zoom-in">H/A</div>
     
-    <p class="invitation-text">
+    <p class="invitation-text" data-aos="fade-up">
         Tanpa mengurangi rasa hormat, dengan ini kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami
     </p>
 
-    <div class="divider-line"></div>
+    <div class="divider-line" data-aos="fade-down"></div>
 
-    <div class="mempelai-container">
-        <div class="arch-frame">
+    <div class="mempelai-container" data-aos="fade-right">
+        <div class="arch-frame" >
             <img src="Images/Pria.PNG" alt="Mempelai Pria">
         </div>
-        <h2 class="mempelai-name">Muhammad Hafis</h2>
-        <span class="mempelai-origin">Padang</span>
-        <p class="mempelai-parents">
+        <h2 class="mempelai-name" data-aos="fade-up">Muhammad Hafis</h2>
+        <span class="mempelai-origin" data-aos="fade-up">Padang</span>
+        <p class="mempelai-parents" data-aos="fade-up">
             Putra Pertama dari Bapak Muhammad Hanafiah &<br>Ibu Yurnida
         </p>
     </div>
 
     <div class="divider-line"></div>
 
-    <div class="mempelai-container">
+    <div class="mempelai-container" data-aos="fade-left">
         <div class="arch-frame">
             <img src="Images/Wanita.PNG" alt="Mempelai Wanita">
         </div>
-        <h2 class="mempelai-name">Siti Nurlailatul Amalia S.E</h2>
-        <span class="mempelai-origin">Bogor</span>
-        <p class="mempelai-parents">
+        <h2 class="mempelai-name" data-aos="fade-up">Siti Nurlailatul Amalia S.E</h2>
+        <span class="mempelai-origin" data-aos="fade-up">Bogor</span>
+        <p class="mempelai-parents" data-aos="fade-up">
             Putri Pertama dari Bapak A. Somad &<br>Ibu Siti Aisah
         </p>
     </div>
@@ -1057,20 +1068,20 @@
 <!-- Section Wedding Event -->
 <section class="event-section" id="event">
     <div class="event-header">
-        <div class="event-title-wrapper">
+        <div class="event-title-wrapper" data-aos="fade-right">
             <h2>Wedding</h2>
             <span class="event-script">Event</span>
         </div>
-        <div class="event-line"></div>
+        <div class="event-line" data-aos="fade-left"></div>
     </div>
     <!-- Akad Nikah -->
     <div class="event-card">
-        <h3 class="event-title">Akad Telah di<br>Laksanakan</h3>
-        <p class="event-day">Minggu</p>
-        <div class="event-date">26</div>
-        <p class="event-year">Oktober, 2025</p>
+        <h3 class="event-title" data-aos="fade-up">Akad</h3>
+        <p class="event-day" data-aos="fade-right">Minggu</p>
+        <div class="event-date" data-aos="fade-left">26</div>
+        <p class="event-year" data-aos="fade-right">Oktober, 2025</p>
         
-        <div class="event-details">
+        <div class="event-details" data-aos="zoom-in">
             <p><i class="fa-regular fa-clock"></i> 09.00 WIB</p>
             <p><strong>Kediaman Mempelai Wanita</strong></p>
             <p>Kp. Pasir Eurih RT.02/RW.02 Cinangka Kec. Ciampea Kab.Bogor</p>
@@ -1079,19 +1090,19 @@
 
     <!-- Resepsi -->
     <div class="event-card">
-        <h3 class="event-title">Resepsi</h3>
-        <p class="event-day">Rabu</p>
-        <div class="event-date">03</div>
-        <p class="event-year">Desember, 2025</p>
+        <h3 class="event-title"  data-aos="fade-up">Resepsi</h3>
+        <p class="event-day" data-aos="fade-right">Rabu</p>
+        <div class="event-date" data-aos="fade-left">03</div>
+        <p class="event-year" data-aos="fade-right">Desember, 2025</p>
         
-        <div class="event-details">
+        <div class="event-details" data-aos="zoom-out">
             <p><i class="fa-regular fa-clock"></i> 08.00 s/d Selesai</p>
             <p><strong>Kediaman Mempelai Pria</strong></p>
             <p>Sungai Geringging, Padang Tarok Kab.Padang Pariaman</p>
         </div>
 
         <!-- Tombol Google Maps -->
-        <a href="https://maps.google.com" target="_blank" class="btn-maps">
+        <a href="https://maps.google.com" target="_blank" class="btn-maps" data-aos="zoom-in">
             <i class="fa-solid fa-location-dot"></i> Google Map
         </a>
     </div>
@@ -1100,33 +1111,33 @@
 <!-- Section Gallery -->
 <section class="gallery-section" id="gallery">
     <div class="gallery-header">
-        <div class="gallery-line"></div>
-        <h2>Gallery</h2>
+        <div class="gallery-line" data-aos="fade-right"></div>
+        <h2 data-aos="fade-left">Gallery</h2>
     </div>
 
     <div class="gallery-grid">
         <!-- Foto 1 -->
-        <div class="gallery-item">
+        <div class="gallery-item" data-aos="zoom-in">
             <img src="Images/G-1.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 1">
         </div>
         <!-- Foto 2 -->
-        <div class="gallery-item">
+        <div class="gallery-item" data-aos="zoom-in">
             <img src="Images/G-2.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 2">
         </div>
         <!-- Foto 3 -->
-        <div class="gallery-item"> 
+        <div class="gallery-item" data-aos="zoom-in"> 
             <img src="Images/G-3.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 3">
         </div>
         <!-- Foto 4 -->
-        <div class="gallery-item">
+        <div class="gallery-item" data-aos="zoom-in">
             <img src="Images/G-4.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 4">
         </div>
         <!-- Foto 5 -->
-        <div class="gallery-item">
+        <div class="gallery-item" data-aos="zoom-in">
             <img src="Images/G-5.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 5">
         </div>
         <!-- Foto 6 -->
-        <div class="gallery-item">
+        <div class="gallery-item" data-aos="zoom-in">
             <img src="Images/G-6.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 6">
         </div>
     </div>
@@ -1140,24 +1151,24 @@
 <section class="love-story-wrapper" id="story">
     <!-- Bagian Nama & Story (Referensi image_10.png) -->
     <div class="story-intro">
-        <h1 class="story-names">Hafis & Amelia</h1>
-        <span class="story-label">Story</span>
+        <h1 class="story-names" data-aos="fade-down">Hafis & Amelia</h1>
+        <span class="story-label" data-aos="fade-up">Story</span>
     </div>
 
     <!-- Bagian Foto Arch (Referensi image_10.png) -->
     <div class="story-image-container">
-        <div class="arch-frame-story">
+        <div class="arch-frame-story" data-aos="zoom-in">
             <img src="Images/Story.jpg" alt="Hafis and Amelia">
         </div>
     </div>
 
     <!-- Bagian Teks Cerita (Referensi image_8.png & image_9.png) -->
     <div class="story-section">
-        <div class="story-header">
+        <div class="story-header" data-aos="fade-up">
             <h2>LOVE STORY</h2>
         </div>
 
-        <div class="story-content">
+        <div class="story-content" data-aos="zoom-out">
             <p>Pertemuan kami berawal dari tempat kerja. Kami dipertemukan secara tidak terduga sepertinya semesta memang sengaja merangkainya,</p>
             
             <p>dari tatap yang tak sengaja, tumbuhlah percakapan sederhana, dari pertemanan, hadir kenyamanan.</p>
@@ -1181,10 +1192,10 @@
 
 <!-- Section Konfirmasi Kehadiran -->
 <section class="rsvp-section" id="rsvp">
-    <h2>Konfirmasi Kehadiran</h2>
-    <p>Mohon kesediaannya untuk melakukan konfirmasi kehadiran, supaya kami bisa mempersiapkan kehadiran anda dengan baik.</p>
+    <h2 data-aos="fade-up">Konfirmasi Kehadiran</h2>
+    <p data-aos="fade-up">Mohon kesediaannya untuk melakukan konfirmasi kehadiran, supaya kami bisa mempersiapkan kehadiran anda dengan baik.</p>
 
-   <form class="rsvp-form" id="form-rsvp">
+   <form class="rsvp-form" id="form-rsvp" data-aos="zoom-out">
         <div class="form-group">
             <input type="text" name="nama" placeholder="Nama Lengkap" required>
         </div>
@@ -1341,7 +1352,7 @@
         // ------------------------------
 
         // Script sederhana untuk countdown (tetap sama)
-        const targetDate = new Date("Dec 3, 2025 08:00:00").getTime();
+        const targetDate = new Date("jul 30, 2026 08:00:00").getTime();
 
         setInterval(() => {
             const now = new Date().getTime();
@@ -1481,5 +1492,12 @@ function toggleGift() {
         });
         
     </script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, // Durasi animasi (ms)
+    once: true,     // Animasi hanya berjalan sekali saat scroll ke bawah
+  });
+</script>
 </body>
 </html>
