@@ -18,7 +18,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        html {
+		html {
     scroll-behavior: smooth;
 }
 
@@ -32,10 +32,12 @@
 
         /* --- CSS untuk Slideshow Background --- */
         .slideshow-container {
-            position: scroll; /* Menjaga background tetap di tempat */
+            position: absolute; /* Menjaga background tetap di tempat */
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100vh;
-             background-size: cover;
+			 background-size: cover;
             background-position: center;
             z-index: -1; /* Meletakkan slideshow di belakang konten */
             overflow: hidden;
@@ -61,6 +63,8 @@
         /* Overlay gelap agar teks lebih mudah terbaca */
         .slideshow-overlay {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.7));
@@ -257,7 +261,7 @@
     margin: 0 auto 30px;
     border-radius: 150px 150px 0 0; /* Membuat bentuk kubah/arch */
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .arch-frame img {
@@ -512,9 +516,9 @@
 }
 
 .story-header {
-    padding: 0 20px;
-    text-align: center;
-    color: #4a4a4a;
+	padding: 0 20px;
+	text-align: center;
+	color: #4a4a4a;
 }
 .story-content{
     padding: 0 20px;
@@ -917,7 +921,7 @@
             border: 1px solid rgba(255,255,255,0.3);
             z-index: 10;
         }
-        /* Opsional: Tambahkan efek transisi pada tombol saat ditekan */
+		/* Opsional: Tambahkan efek transisi pada tombol saat ditekan */
 .nav-link {
     transition: all 0.3s ease;
 }
@@ -1526,7 +1530,7 @@ setTimeout(() => {
     AOS.refresh(); 
 }, 300);
     </script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init({
     duration: 1000, // Durasi animasi (ms)
