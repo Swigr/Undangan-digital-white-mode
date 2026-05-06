@@ -18,9 +18,9 @@
             padding: 0;
             box-sizing: border-box;
         }
-		html {
-			  overflow-x: hidden;
-   			 scroll-behavior: smooth;
+        html {
+              overflow-x: hidden;
+                scroll-behavior: smooth;
 }
 
         body {
@@ -38,7 +38,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-			 background-size: cover;
+             background-size: cover;
             background-position: center;
             z-index: -1; /* Meletakkan slideshow di belakang konten */
             overflow: hidden;
@@ -517,9 +517,9 @@
 }
 
 .story-header {
-	padding: 0 20px;
-	text-align: center;
-	color: #4a4a4a;
+    padding: 0 20px;
+    text-align: center;
+    color: #4a4a4a;
 }
 .story-content{
     padding: 0 20px;
@@ -692,105 +692,136 @@
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-/* Section Friends Wishes */
+/* Wishes Section Styling */
 .wishes-section {
-    background-color: #f8f8f8;
-    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* Efek tekstur kertas halus */
     padding: 60px 20px;
+    background-color: #f8f9fa; /* Background abu muda halus */
     text-align: center;
 }
 
-.wishes-section h2 {
+.wishes-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    color: #5a5a7a; /* Warna keunguan lembut sesuai gambar */
+    color: #5d6783; /* Warna ungu keabuan sesuai gambar */
+    font-size: 2.5rem;
     margin-bottom: 30px;
 }
 
-/* Form Ucapan */
-.wishes-form {
-    max-width: 450px;
-    margin: 0 auto 50px;
+/* Card Form */
+.wish-card {
     background: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    max-width: 500px;
+    margin: 0 auto 40px;
 }
 
-.wishes-form textarea, 
-.wishes-form input {
+.input-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.input-group textarea, 
+.input-group input {
     width: 100%;
     padding: 12px;
-    margin-bottom: 15px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 8px;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
+    outline: none;
+    color: #666;
 }
 
-.wishes-form textarea {
-    height: 100px;
+.input-group textarea {
+    height: 120px;
     resize: none;
 }
 
-.btn-send {
-    float: right;
-    background-color: transparent;
-    color: #d19275; /* Warna peach/salmon sesuai tombol Kirim */
+/* Icon dalam input nama */
+.icon-input i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+.icon-input input {
+    padding-left: 40px;
+}
+
+/* Tombol Kirim */
+.btn-container {
+    text-align: right;
+}
+
+.btn-kirim {
+    background: white;
+    color: #d19275;
     border: 1px solid #d19275;
     padding: 8px 25px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    font-weight: 500;
     transition: 0.3s;
 }
 
-.btn-send:hover {
-    background-color: #d19275;
+.btn-kirim:hover {
+    background: #d19275;
     color: white;
 }
 
-/* List Ucapan */
+/* Divider & List */
+.wishes-info {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    color: #bbb;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.wishes-divider {
+    border: 0;
+    border-top: 2px solid #333;
+    margin: 10px 0 25px;
+}
+
 .wishes-display {
     max-width: 500px;
     margin: 0 auto;
     text-align: left;
 }
 
-.wishes-count {
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    border-bottom: 2px solid #333;
-    padding-bottom: 5px;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-}
-
 .wish-item {
     margin-bottom: 25px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
+}
+
+.wish-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
 }
 
 .wish-name {
-    color: #d19275; /* Warna nama pemberi ucapan */
+    color: #d19275; /* Warna orange kecokelatan */
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
 }
 
 .wish-time {
-    font-size: 0.75rem;
     color: #999;
-    margin-left: 10px;
+    font-size: 0.8rem;
 }
 
 .wish-text {
-    margin-top: 8px;
-    font-size: 0.9rem;
     color: #444;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: 0.9rem;
 }
+
 /* Section Closing */
 .closing-section {
     position: relative;
@@ -922,7 +953,7 @@
             border: 1px solid rgba(255,255,255,0.3);
             z-index: 10;
         }
-		/* Opsional: Tambahkan efek transisi pada tombol saat ditekan */
+        /* Opsional: Tambahkan efek transisi pada tombol saat ditekan */
 .nav-link {
     transition: all 0.3s ease;
 }
@@ -993,9 +1024,9 @@
             <p class="date-text" data-aos="fade-right" data-aos-delay="600">Rabu, 30 Juli 2026</p>
         </div>
 
-        <p class="save-the-date" data-aos="fade-up" data-aos-delay="800">Save The Date</p>
+        <p class="save-the-date" data-aos="fade-up" data-aos-delay="700">Save The Date</p>
         
-        <div class="countdown" data-aos="fade-up" data-aos-delay="1000">
+        <div class="countdown" data-aos="fade-up" data-aos-delay="800">
             <div class="timer-box">
                 <span id="days">00</span>
                 <small>Days</small>
@@ -1130,27 +1161,33 @@
     <div class="gallery-grid">
         <!-- Foto 1 -->
         <div class="gallery-item" data-aos="zoom-in">
-            <img src="Images/G-1.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 1">
+            <img src="Images/G-1.PNG" onclick="openLightbox(this.src)"
+              alt="Wedding Photo 1">
         </div>
         <!-- Foto 2 -->
         <div class="gallery-item" data-aos="zoom-in">
-            <img src="Images/G-2.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 2">
+            <img src="Images/G-2.PNG" onclick="openLightbox(this.src)"
+              alt="Wedding Photo 2">
         </div>
         <!-- Foto 3 -->
         <div class="gallery-item" data-aos="zoom-in"> 
-            <img src="Images/G-3.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 3">
+            <img src="Images/G-3.PNG" onclick="openLightbox(this.src)"
+              alt="Wedding Photo 3">
         </div>
         <!-- Foto 4 -->
         <div class="gallery-item" data-aos="zoom-in">
-            <img src="Images/G-4.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 4">
+            <img src="Images/G-4.PNG" onclick="openLightbox(this.src)"
+              alt="Wedding Photo 4">
         </div>
         <!-- Foto 5 -->
         <div class="gallery-item" data-aos="zoom-in">
-            <img src="Images/G-5.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 5">
+            <img src="Images/G-5.PNG" onclick="openLightbox(this.src)"
+              alt="Wedding Photo 5">
         </div>
         <!-- Foto 6 -->
         <div class="gallery-item" data-aos="zoom-in">
-            <img src="Images/G-6.PNG" onclick=“openLightbox(this.src)”  alt="Wedding Photo 6">
+            <img src="Images/G-6.PNG" onclick="openLightbox(this.src)"
+              alt="Wedding Photo 6">
         </div>
     </div>
 </section>
@@ -1268,39 +1305,38 @@
     </div>
 </section>
 <section class="wishes-section" id="wishes">
-    <h2>Friends Wishes</h2>
-
-    <div class="wishes-form" data-aos="zoom-in">
-        <form id="guestbook-form">
-            <textarea id="guest-message" placeholder="Ucapan Selamat & doa" required></textarea>
-            <div style="position: relative;">
-                <input type="text" id="guest-name" placeholder="Nama*" required style="padding-left: 35px;">
-                <span style="position: absolute; left: 12px; top: 12px; color: #aaa;"><i class="fas fa-user"></i></span>
-            </div>
-            <button type="submit" class="btn-send">Kirim</button>
-            <div style="clear: both;"></div>
-        </form>
-    </div>
-
-    <div class="wishes-display">
-        <div class="wishes-count">22 Best Friends Wishes</div>
+    <div class="container" data-aos="fade-up">
+        <h2 class="wishes-title">Friends Wishes</h2>
         
-        <div id="wishes-container">
+        <!-- Form Box -->
+        <div class="wish-card">
+            <form id="wish-form">
+                <div class="input-group">
+                    <textarea id="wish-text" placeholder="Ucapan Selamat & doa" required></textarea>
+                </div>
+                <div class="input-group icon-input">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="wish-name" placeholder="Nama*" required>
+                </div>
+                <div class="btn-container">
+                    <button type="submit" class="btn-kirim">Kirim</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Counter & Divider -->
+        <div class="wishes-info">
+            <span id="wishes-counter">0 BEST FRIENDS WISHES</span>
+            <hr class="wishes-divider">
+        </div>
+
+        <!-- Scrollable Wishes List -->
+        <div class="wishes-display" id="wishes-container">
             <!-- Data dari Firebase akan muncul di sini -->
-            <div class="wish-item" data-aos="fade-right">
-                <span class="wish-name">Bg Riki & Istri</span>
-                <span class="wish-time">🕒 6 months Yang Lalu</span>
-                <p class="wish-text">SLAMAT MENEMPUH HIDUP BARU..SAMAWA LANGGENG SAMPE KAKEK NENEK..</p>
-            </div>
-            
-            <div class="wish-item">
-                <span class="wish-name">Sela&suami</span>
-                <span class="wish-time">🕒 6 months Yang Lalu</span>
-                <p class="wish-text">Happy wedding amel🥰 maaf ga bisa dateng soalnya ga bisa ambil libur di weekend🙏</p>
-            </div>
         </div>
     </div>
 </section>
+
 <!-- Section Closing -->
 <section class="closing-section" id="closing">
     <div class="closing-content" data-aos="fade-up">
@@ -1347,6 +1383,126 @@
             Wishes
         </a>
     </nav>
+
+<!-- GUNAKAN SATU BLOK MODUL INI SAJA -->
+ <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+      import { getDatabase, ref, push, set, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-database.js";
+    
+      const firebaseConfig = {
+        apiKey: "AIzaSyC4i4Z8tiznOL3-d93fFgRY8pEPgHyON_U",
+        authDomain: "white-mode.firebaseapp.com",
+        projectId: "white-mode",
+        storageBucket: "white-mode.firebasestorage.app",
+        messagingSenderId: "403147165676",
+        appId: "1:403147165676:web:11e9545d8261fb59507ac9", // <-- TAMBAHKAN KOMA DI SINI
+        databaseURL: "https://undangan-digital-white-default-rtdb.asia-southeast1.firebasedatabase.app"
+      };
+    
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      const wishesRef = ref(db, 'wishes');
+    
+      // --- LOGIKA MENGIRIM PESAN ---
+      const wishForm = document.getElementById('wish-form');
+      wishForm.addEventListener('submit', (e) => {
+          e.preventDefault(); 
+    
+          const nameInput = document.getElementById('wish-name');
+          const textInput = document.getElementById('wish-text');
+          const submitBtn = wishForm.querySelector('.btn-kirim');
+    
+          if (!nameInput.value.trim() || !textInput.value.trim()) return;
+    
+          submitBtn.disabled = true;
+          submitBtn.innerText = "Mengirim...";
+    
+          const newWishRef = push(wishesRef);
+          set(newWishRef, {
+              nama: nameInput.value, // Menyimpan dengan kunci 'nama'
+              pesan: textInput.value,
+              timestamp: serverTimestamp()
+          })
+          .then(() => {
+              wishForm.reset();
+              submitBtn.disabled = false;
+              submitBtn.innerText = "Kirim";
+              alert("Ucapan berhasil terkirim!");
+          })
+          .catch((err) => {
+              console.error(err);
+              submitBtn.disabled = false;
+              submitBtn.innerText = "Kirim";
+          });
+      });
+    
+      // --- LOGIKA MENAMPILKAN PESAN ---
+      const container = document.getElementById('wishes-container');
+      const counter = document.getElementById('wishes-counter');
+    
+function timeAgo(timestamp) {
+        if (!timestamp) return 'Baru saja';
+        
+        const now = new Date().getTime();
+        const seconds = Math.floor((now - timestamp) / 1000);
+    
+        let interval = Math.floor(seconds / 31536000);
+        if (interval >= 1) return interval + " tahun yang lalu";
+        
+        interval = Math.floor(seconds / 2592000);
+        if (interval >= 1) return interval + " bulan yang lalu";
+        
+        interval = Math.floor(seconds / 86400);
+        if (interval >= 1) return interval + " hari yang lalu";
+        
+        interval = Math.floor(seconds / 3600);
+        if (interval >= 1) return interval + " jam yang lalu";
+        
+        interval = Math.floor(seconds / 60);
+        if (interval >= 1) return interval + " menit yang lalu";
+        
+        return "Baru saja";
+    }
+    
+    
+    
+      onValue(wishesRef, (snapshot) => {
+          const dataRaw = snapshot.val();
+          if (!container) return;
+          container.innerHTML = '';
+          
+          if (!dataRaw) {
+              container.innerHTML = '<p style="text-align:center; color:#888;">Belum ada ucapan.</p>';
+              return;
+          }
+    
+          const list = Object.values(dataRaw);
+          if(counter) counter.innerText = ` BEST FRIENDS WISHES`;
+    
+          // Urutkan terbaru di atas
+          list.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+    
+          list.forEach((data) => {
+              container.innerHTML += `
+                  <div class="wish-item">
+                      <div class="wish-header">
+                          <span class="wish-name">${data.nama}</span> <!-- DIUBAH DARI pengirim KE nama -->
+                          <span class="wish-time">
+                              <i class="fa-regular fa-clock"></i>${timeAgo(data.timestamp)} 
+                          </span>
+                          
+                      </div>
+                      <p class="wish-text">${data.pesan}</p>
+                  </div>
+              `;
+          });
+      });
+    </script>
+    
+    <!-- HAPUS SCRIPT LAMA YANG ADA DI BAWAHNYA (database.ref('wishes')...) -->
+    
+    
+  
     <script>
         // --- Script untuk Slideshow ---
         const slides = document.querySelectorAll('.slide');
@@ -1467,41 +1623,6 @@ function toggleGift() {
             });
         }
         
-// Asumsi Anda sudah menginisialisasi Firebase di project Anda
-        const db = firebase.database();
-        
-        // Fungsi Mengirim Ucapan
-        document.getElementById('guestbook-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('guest-name').value;
-            const message = document.getElementById('guest-message').value;
-        
-            db.ref('wishes').push({
-                nama: name,
-                ucapan: message,
-                timestamp: Date.now()
-            }).then(() => {
-                document.getElementById('guestbook-form').reset();
-            });
-        });
-        
-        // Fungsi Menampilkan Ucapan (Real-time)
-        db.ref('wishes').on('value', (snapshot) => {
-            const container = document.getElementById('wishes-container');
-            container.innerHTML = ''; // Kosongkan kontainer sebelum update
-            
-            snapshot.forEach((childSnapshot) => {
-                const data = childSnapshot.val();
-                const html = `
-                    <div class="wish-item">
-                        <span class="wish-name"></span>
-                        <span class="wish-time">🕒 Baru saja</span>
-                        <p class="wish-text"></p>
-                    </div>
-                `;
-                container.insertAdjacentHTML('afterbegin', html);
-            });
-        });
         document.querySelectorAll('.navbar a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault(); // Mencegah pindah seketika
@@ -1531,12 +1652,12 @@ setTimeout(() => {
     AOS.refresh(); 
 }, 300);
     </script>
-	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init({
     duration: 1000, // Durasi animasi (ms)
     once: true,     // Animasi hanya berjalan sekali saat scroll ke bawah
-  });
+  }); 
 </script>
 </body>
 </html>
