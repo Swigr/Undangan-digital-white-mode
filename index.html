@@ -162,6 +162,61 @@
             cursor: pointer; /* Indikasi bisa diklik */
         }
         
+		/* Style untuk Overlay Amplop */
+.envelope-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fdfdfd; /* Warna background putih bersih */
+    background-image: url('Images/G-1.png'); /* Tekstur kertas halus */
+    background-position: center;
+	background-size: cover;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Pastikan paling atas */
+    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+    text-align: center;
+}
+
+.envelope-content {
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+}
+
+/* Tombol Buka */
+.btn-open {
+    padding: 15px 30px;
+    font-size: 1rem;
+    background-color: #d4af37; /* Warna Emas */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    transition: 0.3s;
+}
+
+.btn-open:hover {
+    transform: scale(1.05);
+    background-color: #b8962d;
+}
+
+/* Animasi menghilang ke atas */
+.envelope-overlay.hide {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Mencegah scroll sebelum dibuka */
+body.no-scroll {
+    overflow: hidden;
+}
+		
 /* Section Quotes & Gallery */
         .content-section {
             background-color: #4a4a4a; /* Warna background abu-abu sesuai referensi */
@@ -1006,7 +1061,23 @@
     </style>
 </head>
 <body>
-
+<div id="envelope-overlay" class="envelope-overlay">
+    <div class="envelope-content" data-aos="zoom-in">
+        <div class="envelope-decor">
+            <i class="fa-regular fa-envelope-open fa-3x" style="color: #d4af37; margin-bottom: 20px;"></i>
+        </div>
+        <div class="hero-text">
+            <p data-aos="fade-right" data-aos-delay="200">The Wedding Of</p>
+            <h1 data-aos="fade-right" data-aos-delay="400">Hafis &<br>Amelia</h1>
+            <p class="date-text" data-aos="fade-right" data-aos-delay="600">Rabu, 30 Juli 2026</p>
+        </div>
+        <h3 id="guest-name" style="margin-bottom: 30px; color: #333;">Nama Tamu</h3>
+        
+        <button onclick="openInvitation()" class="btn-open">
+            <i class="fa-solid fa-envelope-open-text"></i> Buka Undangan
+        </button>
+    </div>
+</div>
     <!-- --- Bagian Slideshow Background --- -->
     <div class="slideshow-container">
         <div class="slideshow-overlay"></div>
@@ -1499,11 +1570,43 @@ function timeAgo(timestamp) {
       });
     </script>
     
-    <!-- HAPUS SCRIPT LAMA YANG ADA DI BAWAHNYA (database.ref('wishes')...) -->
+  
     
     
   
-    <script>
+    
+	<script>
+    // Mencegah scroll saat pertama kali dimuat
+    document.body.classList.add('no-scroll');
+
+    function openInvitation() {
+        const overlay = document.getElementById('envelope-overlay');
+        overlay.classList.add('hide');
+        
+        // Izinkan scroll kembali
+        document.body.classList.remove('no-scroll');
+
+        // Jalankan Musik Otomatis (Pastikan id audio Anda adalah 'weddingMusic')
+        const audio = document.getElementById('weddingMusic');
+        if (audio) {
+            audio.play().catch(err => console.log("Autoplay dicegah browser, musik dipicu klik."));
+        }
+
+        // Refresh AOS agar animasi konten muncul setelah dibuka
+        setTimeout(() => {
+            AOS.refresh();
+        }, 1000);
+    }
+
+    // Mengambil nama tamu dari URL (contoh: ?to=Budi)
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('to');
+    if (guestName) {
+        document.getElementById('guest-name').innerText = guestName;
+    }
+</script>
+	
+	<script>
         // --- Script untuk Slideshow ---
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
