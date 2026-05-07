@@ -262,7 +262,7 @@
     margin: 0 auto 30px;
     border-radius: 150px 150px 0 0; /* Membuat bentuk kubah/arch */
     overflow: hidden;
-    box-shadow: 10px 20px 20px rgba(0,0,0,0.4);
+    box-shadow: 20px 20px 10px rgba(0,0,0,0.2);
 }
 
 .arch-frame img {
@@ -1477,7 +1477,7 @@ function timeAgo(timestamp) {
           }
     
           const list = Object.values(dataRaw);
-          if(counter) counter.innerText = ` BEST FRIENDS WISHES`;
+          if(counter) counter.innerText = `${list.length} BEST FRIENDS WISHES`;
     
           // Urutkan terbaru di atas
           list.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
