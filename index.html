@@ -1352,10 +1352,10 @@
 <!-- Footer -->
 <footer class="main-footer">
     <!-- Logo Melingkar (Gunakan gambar ring/logo Anda) -->
-    <img src="Images/Logo.PNG" alt="Logo Rings" class="footer-logo">
+    <img src="Images/Logo.PNG" alt="Logo Rings" class="footer-logo" data-aos="fade-up" data-aos-delay="200">
 
     <!-- Teks Hak Cipta -->
-    <div class="footer-copyright">
+    <div class="footer-copyright" data-aos="fade-up" data-aos-delay="400">
         © 2026 Made With Love by<br>
         <a href="https://sr-invitation.my.id">sr-invitation</a>
     </div>
@@ -1656,7 +1656,9 @@ setTimeout(() => {
 <script>
   AOS.init({
     duration: 1000, // Durasi animasi (ms)
-    once: true,     // Animasi hanya berjalan sekali saat scroll ke bawah
+    once: false,     // Animasi hanya berjalan sekali saat scroll ke bawah
+    mirror: true,   // TAMBAHKAN INI: Animasi akan dipicu ulang saat scroll melewati elemen ke atas
+  offset: 120, // Jarak (pixel) elemen dari bawah layar sebelum animasi dimulai
   }); 
 </script>
 </body>
