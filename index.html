@@ -162,29 +162,30 @@
             cursor: pointer; /* Indikasi bisa diklik */
         }
         
-		/* Style untuk Overlay Amplop */
+        /* Style untuk Overlay Amplop */
 .envelope-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fdfdfd; /* Warna background putih bersih */
+    background-color: black; /* Warna background putih bersih */
     background-image: url('Images/G-1.PNG'); /* Tekstur kertas halus */
     background-position: center;
-	background-size: cover;
-	display: flex;
+    background-size: cover;
+    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10000; /* Pastikan paling atas */
     transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-    text-align: left;
+  
 }
 
 .envelope-content {
     padding: 20px;
     max-width: 500px;
     width: 90%;
+  text-align: center;
 }
 
 /* Tombol Buka */
@@ -216,7 +217,9 @@
 body.no-scroll {
     overflow: hidden;
 }
-		
+        .hero-text {
+            text-align-last: left;
+        }
 /* Section Quotes & Gallery */
         .content-section {
             background-color: #4a4a4a; /* Warna background abu-abu sesuai referensi */
@@ -1063,22 +1066,18 @@ body.no-scroll {
 <body>
 <div id="envelope-overlay" class="envelope-overlay">
     <div class="envelope-content" data-aos="zoom-in">
-        <div class="envelope-decor">
-            <i class="fa-regular fa-envelope-open fa-3x" style="color: #d4af37; margin-bottom: 20px;"></i>
-        </div>
         <div class="hero-text">
             <p data-aos="fade-right" data-aos-delay="200">The Wedding Of</p>
             <h1 data-aos="fade-right" data-aos-delay="400">Hafis &<br>Amelia</h1>
             <p class="date-text" data-aos="fade-right" data-aos-delay="600">Rabu, 30 Juli 2026</p>
         </div>
-        <h3 id="guest-name" style="margin-bottom: 30px; color: #333;">Nama Tamu</h3>
+        <h3 id="guest-name" style="margin-bottom: 30px; color: white;">Nama Tamu</h3>
         
-        <button onclick="openInvitation()" class="btn-open" style" align-item: center;">
+        <button onclick="openInvitation()" class="btn-open" style="align-items: center;">
             <i class="fa-solid fa-envelope-open-text"></i> Buka Undangan
         </button>
     </div>
 </div>
-    <!-- --- Bagian Slideshow Background --- -->
     <div class="slideshow-container">
         <div class="slideshow-overlay"></div>
         <!-- Ganti URL_FOTO_X_DISINI dengan link foto Anda -->
@@ -1086,8 +1085,7 @@ body.no-scroll {
         <div class="slide" style="background-image: url('Images/G-4.PNG');"></div>
         <div class="slide" style="background-image: url('Images/G-3.PNG');"></div>
     </div>
-    <!-- --------------------------------- -->
-
+    
     <section class="hero">
         <div class="hero-text">
             <p data-aos="fade-right" data-aos-delay="200">The Wedding Of</p>
@@ -1548,7 +1546,7 @@ function timeAgo(timestamp) {
           }
     
           const list = Object.values(dataRaw);
-          if(counter) counter.innerText = `${list.length} BEST FRIENDS WISHES`;
+          if(counter) counter.innerText = ` ${list.length} BEST FRIENDS WISHES`;
     
           // Urutkan terbaru di atas
           list.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
@@ -1559,7 +1557,7 @@ function timeAgo(timestamp) {
                       <div class="wish-header">
                           <span class="wish-name">${data.nama}</span> <!-- DIUBAH DARI pengirim KE nama -->
                           <span class="wish-time">
-                              <i class="fa-regular fa-clock"></i>${timeAgo(data.timestamp)} 
+                              <i class="fa-regular fa-clock"></i> 
                           </span>
                           
                       </div>
@@ -1575,7 +1573,7 @@ function timeAgo(timestamp) {
     
   
     
-	<script>
+    <script>
     // Mencegah scroll saat pertama kali dimuat
     document.body.classList.add('no-scroll');
 
@@ -1605,8 +1603,8 @@ function timeAgo(timestamp) {
         document.getElementById('guest-name').innerText = guestName;
     }
 </script>
-	
-	<script>
+    
+    <script>
         // --- Script untuk Slideshow ---
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
