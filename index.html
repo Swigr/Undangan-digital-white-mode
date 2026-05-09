@@ -220,6 +220,12 @@ body.no-scroll {
         .hero-text {
             text-align-last: left;
         }
+		
+/* Kelas untuk mematikan scroll */
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
 /* Section Quotes & Gallery */
         .content-section {
             background-color: #4a4a4a; /* Warna background abu-abu sesuai referensi */
@@ -1090,7 +1096,7 @@ body.no-scroll {
         
     </style>
 </head>
-<body>
+<body class="no-scroll">
 <div id="envelope-overlay" class="envelope-overlay">
     <div class="envelope-content hero" style="margin-bottom: 60px; data-aos="zoom-in">
         <div class="hero-text" >
@@ -1608,27 +1614,27 @@ function timeAgo(timestamp) {
   
     
     <script>
-    // Mencegah scroll saat pertama kali dimuat
-    document.body.classList.add('no-scroll');
+	function openInvitation() {
+    // 1. Ambil elemen envelope
+    const envelope = document.getElementById('envelope-overlay');
+    
+    // 2. Tambahkan class hide untuk animasi menghilang
+    envelope.classList.add('hide');
+    
+    // 3. HAPUS kelas no-scroll agar tamu bisa scroll setelah undangan dibuka
+    document.body.classList.remove('no-scroll');
 
-    function openInvitation() {
-        const overlay = document.getElementById('envelope-overlay');
-        overlay.classList.add('hide');
-        
-        // Izinkan scroll kembali
-        document.body.classList.remove('no-scroll');
-
-        // Jalankan Musik Otomatis (Pastikan id audio Anda adalah 'weddingMusic')
-        const audio = document.getElementById('weddingMusic');
-        if (audio) {
-            audio.play().catch(err => console.log("Autoplay dicegah browser, musik dipicu klik."));
-        }
-
-        // Refresh AOS agar animasi konten muncul setelah dibuka
-        setTimeout(() => {
-            AOS.refresh();
-        }, 1000);
+    // 4. Jalankan musik (jika ada)
+    const audio = document.getElementById('weddingMusic');
+    if (audio) {
+        audio.play().catch(err => console.log("Autoplay dicegah browser"));
     }
+
+    // 5. Refresh AOS agar animasi konten dalam terdeteksi
+    setTimeout(() => {
+        AOS.refresh();
+    }, 1000);
+}
 
     // Mengambil nama tamu dari URL (contoh: ?to=Budi)
     const urlParams = new URLSearchParams(window.location.search);
