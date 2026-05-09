@@ -880,6 +880,33 @@ body.no-scroll {
     font-size: 0.9rem;
 }
 
+#wishes-container {
+    max-height: 400px; /* Batas tinggi kolom ucapan */
+    overflow-y: auto;  /* Munculkan scroll bar jika teks melebihi batas tinggi */
+    padding-right: 10px; /* Ruang agar teks tidak tertutup scroll bar */
+    scroll-behavior: smooth;
+    margin-top: 15px;
+}
+
+/* Desain scroll bar untuk Chrome, Safari, dan Edge */
+#wishes-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#wishes-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#wishes-container::-webkit-scrollbar-thumb {
+    background: #d4af37; /* Warna emas senada tema Anda */
+    border-radius: 10px;
+}
+
+#wishes-container::-webkit-scrollbar-thumb:hover {
+    background: #b8962d;
+}
+
 /* Section Closing */
 .closing-section {
     position: relative;
@@ -1065,13 +1092,13 @@ body.no-scroll {
 </head>
 <body>
 <div id="envelope-overlay" class="envelope-overlay">
-    <div class="envelope-content" data-aos="zoom-in">
-        <div class="hero-text">
+    <div class="envelope-content hero" style="margin-bottom: 60px; data-aos="zoom-in">
+        <div class="hero-text" >
             <p data-aos="fade-right" data-aos-delay="200">The Wedding Of</p>
             <h1 data-aos="fade-right" data-aos-delay="400">Hafis &<br>Amelia</h1>
-            <p class="date-text" data-aos="fade-right" data-aos-delay="600">Rabu, 30 Juli 2026</p>
+            <p class="date-text" style="margin-bottom: 40px;"data-aos="fade-right" data-aos-delay="600">Rabu, 30 Juli 2026</p>
         </div>
-        <h3 id="guest-name" style="margin-bottom: 30px; color: white;">Nama Tamu</h3>
+        <h3 id="guest-name" style="margin-bottom: 20px; color: white;">Nama Tamu</h3>
         
         <button onclick="openInvitation()" class="btn-open" style="align-items: center;">
             <i class="fa-solid fa-envelope-open-text"></i> Buka Undangan
@@ -1504,6 +1531,12 @@ body.no-scroll {
               submitBtn.innerText = "Kirim";
           });
       });
+	  
+	  // Tambahkan baris ini setelah alert "berhasil terkirim"
+const wishesContainer = document.getElementById('wishes-container');
+if (wishesContainer) {
+    wishesContainer.scrollTo({ top: 0, behavior: 'smooth' });
+}
     
       // --- LOGIKA MENAMPILKAN PESAN ---
       const container = document.getElementById('wishes-container');
@@ -1557,12 +1590,13 @@ function timeAgo(timestamp) {
                       <div class="wish-header">
                           <span class="wish-name">${data.nama}</span> <!-- DIUBAH DARI pengirim KE nama -->
                           <span class="wish-time">
-                              <i class="fa-regular fa-clock"></i>${timeAgo(data.timestamp)} 
+                              <i class="fa-regular fa-clock"></i> ${timeAgo(data.timestamp)}
                           </span>
                           
                       </div>
                       <p class="wish-text">${data.pesan}</p>
                   </div>
+				   <hr class="wishes-divider" style="opacity: 0.3; height: 1px;">
               `;
           });
       });
