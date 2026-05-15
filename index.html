@@ -1608,10 +1608,23 @@ function timeAgo(timestamp) {
       });
     </script>
     
-  
-    
-    
-  
+  <script>
+    // Fungsi untuk mengambil parameter 'to' dari URL
+    function getGuestName() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const guestName = urlParams.get('to'); // Mengambil ?to=Nama+Tamu
+        
+        const guestElement = document.getElementById('guest-name');
+        
+        if (guestName && guestElement) {
+            // Mengganti karakter '+' atau '%20' menjadi spasi biasa
+            guestElement.innerText = decodeURIComponent(guestName.replace(/\+/g, ' '));
+        }
+    }
+
+    // Jalankan fungsi saat halaman dimuat
+    window.addEventListener('DOMContentLoaded', getGuestName);
+</script>
     
     <script>
 	function openInvitation() {
@@ -1635,13 +1648,6 @@ function timeAgo(timestamp) {
         AOS.refresh();
     }, 1000);
 }
-
-    // Mengambil nama tamu dari URL (contoh: ?to=Budi)
-    const urlParams = new URLSearchParams(window.location.search);
-    const guestName = urlParams.get('to');
-    if (guestName) {
-        document.getElementById('guest-name').innerText = guestName;
-    }
 </script>
     
     <script>
