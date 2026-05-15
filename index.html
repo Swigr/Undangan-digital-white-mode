@@ -370,7 +370,7 @@ body.no-scroll {
     text-align: center;
     color: white;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('Images/bg-event.JPEG') no-repeat center center/cover;
+                url('Images/bg-event.jpg') no-repeat center center/cover;
     background-attachment: scroll; /* Memberikan efek parallax halus */
 }
 
@@ -1000,37 +1000,50 @@ body.no-scroll {
     font-weight: 500;
 }
 
-        /* Bottom Navigation */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: rgba(80, 80, 80, 0.9);
-            display: flex;
-            justify-content: space-around;
-            padding: 15px 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            z-index: 1000;
-        }
+       .bottom-nav {
+        position: fixed;
+        bottom: 20px; /* Jarak dari bawah agar terlihat melayang */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 400px;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        border-radius: 30px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        z-index: 9999;
+    }
 
         .nav-item {
-            text-align: center;
-            color: #ddd;
-            text-decoration: none;
-            font-size: 0.7rem;
-            flex: 1;
-            border-right: 1px solid rgba(255,255,255,0.2);
-        }
-
+        text-decoration: none;
+        color: #888;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.3s ease;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+    }
+	
+	.nav-item.active {
+        color: black; /* Warna Emas */
+        background: rgba(255, 255, 255, 0.5);
+        /* Bayangan di bawah ikon yang menonjol */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
+        transform: translateY(-10px); /* Ikon naik sedikit */
+    }
         .nav-item:last-child {
             border-right: none;
         }
 
         .nav-item i {
-            display: block;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
+        font-size: 1.2rem;
+        margin-bottom: 2px;
+    }
 
         .footer-link {
             position: fixed;
@@ -1111,6 +1124,7 @@ body.no-scroll {
         </button>
     </div>
 </div>
+	<section id="cover">
     <div class="slideshow-container">
         <div class="slideshow-overlay"></div>
         <!-- Ganti URL_FOTO_X_DISINI dengan link foto Anda -->
@@ -1119,7 +1133,7 @@ body.no-scroll {
         <div class="slide" style="background-image: url('Images/G-3.PNG');"></div>
     </div>
     
-    <section class="hero">
+    <div class="hero">
         <div class="hero-text">
             <p data-aos="fade-right" data-aos-delay="200">The Wedding Of</p>
             <h1 data-aos="fade-right" data-aos-delay="400">Hafis &<br>Amelia</h1>
@@ -1146,6 +1160,7 @@ body.no-scroll {
                 <small>Seconds</small>
             </div>
         </div>
+		</div>
         </section>
 <!-- Section Pembukaan Quotes & Mini Gallery -->
 <div class="content-section">
@@ -1463,8 +1478,8 @@ body.no-scroll {
     </div>
 </footer>
 
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item">
+    <nav class="bottom-nav active">
+        <a href="#cover" class="nav-item ">
             <i class="fa-regular fa-envelope-open"></i>
             Cover
         </a>
@@ -1770,7 +1785,7 @@ function toggleGift() {
             });
         }
         
-        document.querySelectorAll('.navbar a').forEach(anchor => {
+        document.querySelectorAll('.nav-item').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault(); // Mencegah pindah seketika
 
@@ -1784,21 +1799,59 @@ function toggleGift() {
                     top: targetElement.offsetTop - 70, // Sesuaikan angka 70 dengan tinggi navbar Anda
                     behavior: 'smooth'
                 });
-            }, 300); // 300ms delay
+            }, 800); // 300ms delay
         }
     });
 });
-
-setTimeout(() => {
-    window.scrollTo({
-        top: targetElement.offsetTop - 70,
-        behavior: 'smooth'
-    });
-    
     // Refresh AOS agar mendeteksi posisi baru setelah scroll
     AOS.refresh(); 
 }, 300);
     </script>
+	<script>
+    // Ambil semua elemen item navbar
+    const navItems = document.querySelectorAll('.nav-item');
+
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // 1. Hapus class 'active' dari semua item
+            navItems.forEach(i => i.classList.remove('active'));
+
+            // 2. Tambahkan class 'active' ke item yang diklik
+            this.classList.add('active');
+        });
+    });
+</script>
+<script>
+    // Ambil semua section yang ingin dipantau
+    const sections = document.querySelectorAll("section");
+    // Ambil semua link di navbar
+    const navLinks = document.querySelectorAll(".nav-item");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            // Cek jika posisi scroll sudah masuk ke area section tertentu
+            // Angka 100 adalah offset agar perpindahan ikon terasa lebih pas
+            if (pageYOffset >= sectionTop - 100) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach((link) => {
+            // Hapus class active dari semua ikon
+            link.classList.remove("active");
+            
+            // Tambahkan class active jika href link sama dengan id section saat ini
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active");
+            }
+        });
+    });
+</script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init({
