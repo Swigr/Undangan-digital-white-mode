@@ -1314,7 +1314,7 @@ body.no-scroll {
     <img id="lightbox-img" src="" alt="Full Image">
 </div>
 
-<section class="love-story-wrapper" id="story">
+<div class="love-story-wrapper">
     <!-- Bagian Nama & Story (Referensi image_10.png) -->
     <div class="story-intro">
         <h1 class="story-names" data-aos="fade-down">Hafis & Amelia</h1>
@@ -1354,10 +1354,10 @@ body.no-scroll {
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <!-- Section Konfirmasi Kehadiran -->
-<section class="rsvp-section" id="rsvp">
+<section class="rsvp-section" id="wishes">
     <h2 data-aos="fade-up">Konfirmasi Kehadiran</h2>
     <p data-aos="fade-up">Mohon kesediaannya untuk melakukan konfirmasi kehadiran, supaya kami bisa mempersiapkan kehadiran anda dengan baik.</p>
 
@@ -1380,7 +1380,7 @@ body.no-scroll {
     </form>
 </section>
 
-<section class="gift-section" id="gift">
+<div id="gift" class="gift-section">
     <h2>Wedding Gift</h2>
     <p>Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado melalui:</p>
 
@@ -1420,8 +1420,8 @@ body.no-scroll {
             </div>
         </div>
     </div>
-</section>
-<section class="wishes-section" id="wishes">
+</div>
+<div class="wishes-section">
     <div class="container" data-aos="fade-up">
         <h2 class="wishes-title">Friends Wishes</h2>
         
@@ -1452,10 +1452,10 @@ body.no-scroll {
             <!-- Data dari Firebase akan muncul di sini -->
         </div>
     </div>
-</section>
+</div>
 
 <!-- Section Closing -->
-<section class="closing-section" id="closing">
+<div class="closing-section">
     <div class="closing-content" data-aos="fade-up">
         <p class="closing-text">
             Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do'a restu kepada kedua mempelai.
@@ -1464,7 +1464,7 @@ body.no-scroll {
         <p class="closing-title" data-aos="fade-up" data-aos-delay="200">The Wedding of</p>
         <h2 class="closing-names" data-aos="fade-up" data-aos-delay="400">Hafis & Amelia</h2>
     </div>
-</section>
+</div>
 
 <!-- Footer -->
 <footer class="main-footer">
@@ -1766,13 +1766,13 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbxA7NiFUYsSoQ80zS3g_d
         });
         
         
-function toggleGift() {
+	function toggleGift() {
             const container = document.getElementById('gift-container');
-            if (container.style.display === 'block') {
-                container.style.display = 'none';
+            if (giftContainer.style.display === 'none' || giftContainer.style.display === '') {
+                giftContainer.style.display = 'block';
             } else {
-                container.style.display = 'block';
-                container.scrollIntoView({ behavior: 'smooth' });
+                giftContainer.style.display = 'none';
+                giftContainer.scrollIntoView({ behavior: 'smooth' });
             }
         }
         
