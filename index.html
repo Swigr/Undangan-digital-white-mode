@@ -1653,15 +1653,36 @@ function timeAgo(timestamp) {
     document.body.classList.remove('no-scroll');
 
     // 4. Jalankan musik (jika ada)
-    const audio = document.getElementById('weddingMusic');
-    if (audio) {
-        audio.play().catch(err => console.log("Autoplay dicegah browser"));
-    }
-
+    const music = document.getElementById('weddingMusic');
+    const musicBtn = document.getElementById('musicControl');
+    if (music) {
+            music.play().catch(error => {
+                console.log("Autoplay diblokir browser, musik akan diputar setelah interaksi.");
+            });
+            musicBtn.style.display = 'flex'; // Munculkan tombol kontrol musik
+        }
     // 5. Refresh AOS agar animasi konten dalam terdeteksi
     setTimeout(() => {
         AOS.refresh();
     }, 1000);
+}
+
+
+let isPlaying = true;
+
+function toggleMusic() {
+    const music = document.getElementById('weddingMusic');
+    const icon = document.getElementById('musicIcon');
+
+    if (isPlaying) {
+        music.pause();
+        icon.classList.remove('fa-spin'); // Hentikan putaran icon
+        isPlaying = false;
+    } else {
+        music.play();
+        icon.classList.add('fa-spin'); // Putar kembali icon
+        isPlaying = true;
+    }
 }
 </script>
     
@@ -1833,5 +1854,13 @@ function copyText(elementId) {
   offset: 120, // Jarak (pixel) elemen dari bawah layar sebelum animasi dimulai
   }); 
 </script>
+<audio id="weddingMusic" loop>
+    <source src="Musik/Musik.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+</audio>
+
+<div id="musicControl" onclick="toggleMusic()" style="position: fixed; bottom: 100px; right: 20px; z-index: 9999; background: rgba(212, 175, 55, 0.8); width: 40px; height: 40px; border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <i id="musicIcon" class="fa-solid fa-compact-disc fa-spin"></i>
+</div>
 </body>
 </html>
