@@ -1766,61 +1766,33 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbxA7NiFUYsSoQ80zS3g_d
         });
         
         
-	function toggleGift() {
-            const container = document.getElementById('gift-container');
-            if (giftContainer.style.display === 'none' || giftContainer.style.display === '') {
-                giftContainer.style.display = 'block';
-            } else {
-                giftContainer.style.display = 'none';
-                giftContainer.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-        
-        function copyText(elementId) {
-            const text = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Berhasil disalin: " + text);
-            }).catch(err => {
-                console.error('Gagal menyalin: ', err);
-            });
-        }
-        
-        document.querySelectorAll('.nav-item').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault(); // Mencegah pindah seketika
+	// Ganti fungsi toggleGift dan copyText yang lama dengan ini:
+function toggleGift() {
+    const container = document.getElementById('gift-container');
+    if (container.style.display === 'block') {
+        container.style.display = 'none';
+    } else {
+        container.style.display = 'block';
+        // Memberikan sedikit waktu agar container muncul sebelum scroll
+        setTimeout(() => {
+            container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+    }
+}
 
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-
-        if (targetElement) {
-            // Memberikan sedikit jeda (misal: 300ms) agar terasa lebih premium
-            setTimeout(() => {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 70, // Sesuaikan angka 70 dengan tinggi navbar Anda
-                    behavior: 'smooth'
-                });
-            }, 800); // 300ms delay
-        }
-    });
-});
-    // Refresh AOS agar mendeteksi posisi baru setelah scroll
-    AOS.refresh(); 
-}, 300);
-    </script>
-	<script>
-    // Ambil semua elemen item navbar
-    const navItems = document.querySelectorAll('.nav-item');
-
-    navItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // 1. Hapus class 'active' dari semua item
-            navItems.forEach(i => i.classList.remove('active'));
-
-            // 2. Tambahkan class 'active' ke item yang diklik
-            this.classList.add('active');
+function copyText(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        const text = element.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Berhasil disalin: " + text);
+        }).catch(err => {
+            console.error('Gagal menyalin: ', err);
         });
-    });
-</script>
+    }
+}
+    </script>
+	
 <script>
     // Ambil semua section yang ingin dipantau
     const sections = document.querySelectorAll("section");
