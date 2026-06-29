@@ -4,43 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan - Hafis & Amelia (Slideshow)</title>
-    <!-- Font Google -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome untuk Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">   
-   <style>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">   
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         html {
-              overflow-x: hidden;
-                scroll-behavior: smooth;
-}
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #333;
             color: white;
             overflow-x: hidden;
-            height: 100vh; /* Pastikan body penuh layar */
+            height: auto;
         }
 
         /* --- CSS untuk Slideshow Background --- */
         .slideshow-container {
-            position: absolute; /* Menjaga background tetap di tempat */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-             background-size: cover;
+            background-size: cover;
             background-position: center;
-            z-index: -1; /* Meletakkan slideshow di belakang konten */
+            z-index: -1;
             overflow: hidden;
         }
 
@@ -52,16 +50,14 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            opacity: 0; /* Mulai dengan transparan */
-            transition: opacity 1.5s ease-in-out; /* Efek fade in/out */
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
         }
 
-        /* Menampilkan slide pertama saat dimuat */
         .slide.active {
             opacity: 1;
         }
 
-        /* Overlay gelap agar teks lebih mudah terbaca */
         .slideshow-overlay {
             position: absolute;
             top: 0;
@@ -69,11 +65,10 @@
             width: 100%;
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.7));
-            z-index: 1; /* Di depan slide, di belakang konten */
+            z-index: 1;
         }
-        /* -------------------------------------- */
 
-        /* Hero Section - Diubah untuk bekerja dengan slideshow */
+        /* Hero Section */
         .hero {
             position: relative;
             height: 100vh;
@@ -84,7 +79,11 @@
             padding-bottom: 120px;
             text-align: left;
             padding-left: 30px;
-            z-index: 2; /* Meletakkan konten hero di depan slideshow */
+            z-index: 2;
+        }
+
+        .hero-text {
+            text-align-last: left;
         }
 
         .hero-text p {
@@ -145,90 +144,62 @@
             text-transform: capitalize;
         }
   
-        /* Music Button */
-        .music-btn {
-            position: absolute;
-            right: 20px;
-            bottom: 180px;
-            background: white;
-            color: black;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            cursor: pointer; /* Indikasi bisa diklik */
-        }
-        
         /* Style untuk Overlay Amplop */
-.envelope-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black; /* Warna background putih bersih */
-    background-image: url('Images/bg-cover.png'); /* Tekstur kertas halus */
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000; /* Pastikan paling atas */
-    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-  
-}
-
-.envelope-content {
-    padding: 20px;
-    max-width: 500px;
-    width: 90%;
-  text-align: center;
-}
-
-/* Tombol Buka */
-.btn-open {
-    padding: 15px 30px;
-    font-size: 1rem;
-    background-color: #d4af37; /* Warna Emas */
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-    transition: 0.3s;
-}
-
-.btn-open:hover {
-    transform: scale(1.05);
-    background-color: #b8962d;
-}
-
-/* Animasi menghilang ke atas */
-.envelope-overlay.hide {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Mencegah scroll sebelum dibuka */
-body.no-scroll {
-    overflow: hidden;
-}
-        .hero-text {
-            text-align-last: left;
+        .envelope-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            background-image: url('Images/bg-cover.png');
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
         }
-		
-/* Kelas untuk mematikan scroll */
-.no-scroll {
-    overflow: hidden;
-    height: 100vh;
-}
-/* Section Quotes & Gallery */
+
+        .envelope-content {
+            padding: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .btn-open {
+            padding: 15px 30px;
+            font-size: 1rem;
+            background-color: #d4af37;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-open:hover {
+            transform: scale(1.05);
+            background-color: #b8962d;
+        }
+
+        .envelope-overlay.hide {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Section Quotes & Gallery */
         .content-section {
-            background-color: #4a4a4a; /* Warna background abu-abu sesuai referensi */
+            background-color: #4a4a4a;
             padding: 60px 20px;
             text-align: center;
             position: relative;
@@ -267,7 +238,7 @@ body.no-scroll {
         
         .slider-track {
             display: flex;
-            width: calc(200px * 10); /* Sesuaikan dengan jumlah foto agar looping mulus */
+            width: calc(200px * 10);
             animation: scrollRight 20s linear infinite;
         }
         
@@ -280,797 +251,749 @@ body.no-scroll {
             flex-shrink: 0;
         }
         
-        /* Animasi Slide ke Kanan */
         @keyframes scrollRight {
             0% { transform: translateX(-50%); }
             100% { transform: translateX(0); }
         }
         
-        /* Penyesuaian agar body bisa di-scroll */
-        body {
-            overflow-y: auto;
-            height: auto;
+        /* Section Profil Mempelai */
+        .couple-section {
+            background-color: #f9f9f7;
+            padding: 80px 20px;
+            text-align: center;
+            color: #444;
         }
-        
-/* Section Profil Mempelai */
-.couple-section {
-    background-color: #f9f9f7; /* Warna background krem sangat muda */
-    padding: 80px 20px;
-    text-align: center;
-    color: #444;
-}
-
-.couple-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    color: #888;
-    margin-bottom: 20px;
-    letter-spacing: 5px;
-}
-
-.invitation-text {
-    font-size: 0.9rem;
-    line-height: 1.8;
-    margin-bottom: 40px;
-    padding: 0 10px;
-}
-
-.mempelai-container {
-    margin-bottom: 60px;
-}
-
-/* Bingkai Foto Melengkung (Arch) */
-.arch-frame {
-    width: 220px;
-    height: 300px;
-    margin: 0 auto 30px;
-    border-radius: 150px 150px 0 0; /* Membuat bentuk kubah/arch */
-    overflow: hidden;
-    box-shadow: 20px 20px 10px rgba(0,0,0,0.2);
-}
-
-.arch-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.mempelai-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.mempelai-origin {
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.mempelai-parents {
-    font-size: 0.85rem;
-    color: #666;
-    font-style: italic;
-}
-
-/* Garis Pembatas Vertikal */
-.divider-line {
-    width: 1px;
-    height: 60px;
-    background-color: #ccc;
-    margin: 30px auto;
-}
-
-/* Section Wedding Event */
-.event-section {
-    position: relative;
-    padding: 20px 15px;
-    text-align: center;
-    color: white;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('Images/bg-event.JPEG') no-repeat center center/cover;
-    background-attachment: scroll; /* Memberikan efek parallax halus */
-}
-
-/* Header Wedding Event di Pojok Kiri Atas */
-.event-header {
-    display: flex;
-    
-    align-items: center; /* Menyejajarkan teks dan garis secara vertikal */
-    gap: 10px; /* Jarak antara teks dan garis */
-    margin-top: 10px;
-    left: 0;
-    margin-bottom: 50px;
-    padding-left: -10px; /* Jarak dari tepi kiri */
-}
-
-.event-title-wrapper {
-    text-align: left;
-}
-
-.event-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    line-height: 1;
-    margin: 0;
-    font-weight: 400;
-}
-
-.event-header .event-script {
-    font-family: 'Dancing Script', cursive; /* Pastikan font ini di-import jika ingin gaya tulisan tangan */
-    font-size: 2.5rem;
-    display: block;
-    margin-top: -10px;
-    font-weight: 300;
-}
-
-/* Garis Horizontal yang memanjang ke kanan */
-.event-line {
-    
-    margin-top: -30px;
-    flex-grow: 1; /* Membuat garis mengisi sisa ruang ke kanan */
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.6);
-}
-
-.event-card {
-    margin-bottom: 60px;
-}
-
-.event-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
-
-.event-day {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.event-date {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    line-height: 1;
-    margin: 10px 0;
-}
-
-.event-year {
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-}
-
-.event-details {
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-.event-details i {
-    margin-right: 8px;
-}
-
-.btn-maps {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 10px 25px;
-    background-color: white;
-    color: #333;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.btn-maps i {
-    margin-right: 8px;
-    color: #cc0000;
-}
-
-/* Section Gallery */
-.gallery-section {
-    background-color: #f9f9f7; /* Senada dengan section couple */
-    padding: 60px 15px 120px; /* Padding bawah lebih besar untuk ruang navigasi */
-}
-
-/* Header Gallery di Pojok Kanan Atas */
-.gallery-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-.gallery-line {
-    flex-grow: 1;
-    height: 1px;
-    background-color: #ccc;
-}
-
-.gallery-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-style: italic;
-    font-weight: 400;
-    color: #555;
-    margin: 0;
-}
-
-/* Grid Galeri 2 Kolom */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Membuat 2 kolom sejajar */
-    gap: 10px; /* Jarak antar foto */
-}
-
-.gallery-item {
-    width: 100%;
-    aspect-ratio: 3 / 4; /* Mengatur proporsi foto agar seragam */
-    overflow: hidden;
-    border-radius: 4px;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-/* Efek zoom sederhana saat foto diklik/dihover */
-.gallery-item img:active {
-    transform: scale(1.1);
-}
-
-/* Container Utama Love Story */
-.love-story-wrapper {
-    background-color: #ffffff;
-    padding: 60px 0;
-}
-
-/* Bagian Judul Nama & Story */
-.story-intro {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.story-names {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: #4a4a4a;
-    margin: 0;
-    font-weight: 400;
-}
-
-.story-label {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
-    color: #4a4a4a;
-    display: block;
-    margin-top: -15px; /* Menumpuk sedikit dengan nama atas */
-}
-
-/* Bingkai Foto Melengkung (Arch) */
-.story-image-container {
-    padding: 0 20px;
-    margin-bottom: 50px;
-}
-
-.arch-frame-story {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    /* Membuat bentuk melengkung di kiri atas */
-    border-top-left-radius: 200px; 
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.arch-frame-story img {
-    width: 100%;
-    height: auto;
-    display: block;
-    /* Membuat foto menjadi Hitam Putih seperti referensi */
-    filter: grayscale(100%); 
-}
-
-.story-header {
-    padding: 0 20px;
-    text-align: center;
-    color: #4a4a4a;
-}
-.story-content{
-    padding: 0 20px;
-    text-align: center;
-    color: #4a4a4a;
-}
-
-/* Section Konfirmasi Kehadiran */
-.rsvp-section {
-    background-color: #c4c4c4; /* Warna abu-abu sesuai referensi */
-    padding: 60px 20px;
-    text-align: center;
-    color: #4a4a4a;
-}
-
-.rsvp-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-    font-weight: 400;
-}
-
-.rsvp-section p {
-    font-size: 0.9rem;
-    margin-bottom: 30px;
-    line-height: 1.5;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Form Styling */
-.rsvp-form {
-    max-width: 450px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-row {
-    display: flex;
-    gap: 10px;
-}
-
-.rsvp-form label {
-    display: block;
-    font-size: 0.8rem;
-    margin-bottom: 5px;
-    color: #666;
-}
-
-.rsvp-form input, 
-.rsvp-form select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
-}
-
-/* Tombol Kirim */
-.btn-submit {
-    width: 100%;
-    padding: 12px;
-    background-color: #333; /* Warna gelap sesuai gambar */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s;
-}
-
-.btn-submit:hover {
-    background-color: #000;
-}
-
-/* Section Wedding Gift */
-.gift-section {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #fff;
-}
-
-.gift-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    color: #4a4a4a;
-    margin-bottom: 20px;
-}
-
-.gift-section p {
-    font-size: 0.9rem;
-    color: #666;
-    max-width: 500px;
-    margin: 0 auto 30px;
-    line-height: 1.6;
-}
-
-/* Tombol Kirim Hadiah */
-.btn-gift {
-    background-color: #b08d48; /* Warna emas kecokelatan sesuai gambar */
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: 0.3s;
-}
-
-/* Container Rekening (Sembunyi secara default) */
-#gift-container {
-    display: none;
-    margin-top: 40px;
-    animation: fadeIn 0.5s ease;
-}
-
-.bank-card {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    max-width: 350px;
-    margin: 0 auto 20px;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: left;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.bank-name {
-    font-weight: bold;
-    font-size: 1.2rem;
-    text-align: right;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.account-name {
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-}
-
-.account-number {
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-}
-
-.btn-copy {
-    background-color: #8c9bad;
-    color: white;
-    border: none;
-    padding: 5px 12px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    cursor: pointer;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-/* Wishes Section Styling */
-.wishes-section {
-    padding: 60px 20px;
-    background-color: #f8f9fa; /* Background abu muda halus */
-    text-align: center;
-}
-
-.wishes-title {
-    font-family: 'Playfair Display', serif;
-    color: #5d6783; /* Warna ungu keabuan sesuai gambar */
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-}
-
-/* Card Form */
-.wish-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    max-width: 500px;
-    margin: 0 auto 40px;
-}
-
-.input-group {
-    margin-bottom: 15px;
-    position: relative;
-}
-
-.input-group textarea, 
-.input-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
-    outline: none;
-    color: #666;
-}
-
-.input-group textarea {
-    height: 120px;
-    resize: none;
-}
-
-/* Icon dalam input nama */
-.icon-input i {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #aaa;
-}
-
-.icon-input input {
-    padding-left: 40px;
-}
-
-/* Tombol Kirim */
-.btn-container {
-    text-align: right;
-}
-
-.btn-kirim {
-    background: white;
-    color: #d19275;
-    border: 1px solid #d19275;
-    padding: 8px 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-.btn-kirim:hover {
-    background: #d19275;
-    color: white;
-}
-
-/* Divider & List */
-.wishes-info {
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: left;
-    color: #bbb;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    font-weight: bold;
-}
-
-.wishes-divider {
-    border: 0;
-    border-top: 2px solid #333;
-    margin: 10px 0 25px;
-}
-
-.wishes-display {
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.wish-item {
-    margin-bottom: 25px;
-}
-
-.wish-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 5px;
-}
-
-.wish-name {
-    color: #d19275; /* Warna orange kecokelatan */
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-.wish-time {
-    color: #999;
-    font-size: 0.8rem;
-}
-
-.wish-text {
-    color: #444;
-    line-height: 1.6;
-    font-size: 0.9rem;
-}
-
-#wishes-container {
-    max-height: 400px; /* Batas tinggi kolom ucapan */
-    overflow-y: auto;  /* Munculkan scroll bar jika teks melebihi batas tinggi */
-    padding-right: 10px; /* Ruang agar teks tidak tertutup scroll bar */
-    scroll-behavior: smooth;
-    margin-top: 15px;
-}
-
-/* Desain scroll bar untuk Chrome, Safari, dan Edge */
-#wishes-container::-webkit-scrollbar {
-    width: 6px;
-}
-
-#wishes-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-#wishes-container::-webkit-scrollbar-thumb {
-    background: #d4af37; /* Warna emas senada tema Anda */
-    border-radius: 10px;
-}
-
-#wishes-container::-webkit-scrollbar-thumb:hover {
-    background: #b8962d;
-}
-
-/* Section Closing */
-.closing-section {
-    position: relative;
-    width: 100%;
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Teks berada di area bawah foto */
-    align-items: center;
-    text-align: center;
-    background: url('Images/G-3.PNG') no-repeat center center;
-    background-size: cover;
-    padding-bottom: 80px;
-    color: #4a4a4a;
-}
-
-/* Overlay Putih Transparan (Gradient) agar teks terbaca jelas */
-.closing-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.9) 70%, rgba(255,255,255,1) 100%);
-    z-index: 1;
-}
-
-.closing-content {
-    position: relative;
-    z-index: 2; /* Di atas overlay */
-    padding: 0 30px;
-    max-width: 600px;
-}
-
-.closing-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    font-weight: 300;
-}
-
-.closing-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    color: #888;
-}
-
-.closing-names {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    font-style: italic;
-    font-weight: 400;
-    color: #4a4a4a;
-    margin: 0;
-}
-
-/* Footer Utama */
-.main-footer {
-    background-color: #4a4a4a; /* Warna gelap sesuai referensi */
-    padding: 50px 20px 120px; /* Padding bawah ekstra untuk ruang bottom nav */
-    text-align: center;
-    color: #ffffff;
-    position: relative;
-}
-
-.footer-logo {
-    width: 80px; /* Sesuaikan ukuran logo */
-    height: auto;
-    margin-bottom: 20px;
-}
-
-.footer-copyright {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.5;
-}
-
-.footer-copyright a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-       .bottom-nav {
-        position: fixed;
-        bottom: 20px; /* Jarak dari bawah agar terlihat melayang */
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        max-width: 400px;
-        background: rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(10px);
-        display: flex;
-        justify-content: space-around;
-        padding: 10px;
-        border-radius: 30px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        z-index: 9999;
-    }
+
+        .couple-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #888;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+
+        .invitation-text {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+
+        .mempelai-container {
+            margin-bottom: 60px;
+        }
+
+        .arch-frame {
+            width: 220px;
+            height: 300px;
+            margin: 0 auto 30px;
+            border-radius: 150px 150px 0 0;
+            overflow: hidden;
+            box-shadow: 20px 20px 10px rgba(0,0,0,0.2);
+        }
+
+        .arch-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mempelai-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .mempelai-origin {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .mempelai-parents {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .divider-line {
+            width: 1px;
+            height: 60px;
+            background-color: #ccc;
+            margin: 30px auto;
+        }
+
+        /* Section Wedding Event */
+        .event-section {
+            position: relative;
+            padding: 40px 15px;
+            text-align: center;
+            color: white;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('Images/bg-event.JPEG') no-repeat center center/cover;
+        }
+
+        .event-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+
+        .event-title-wrapper {
+            text-align: left;
+        }
+
+        .event-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            line-height: 1;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .event-header .event-script {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            display: block;
+            margin-top: -10px;
+            font-weight: 300;
+        }
+
+        .event-line {
+            margin-top: -30px;
+            flex-grow: 1;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .event-card {
+            margin-bottom: 60px;
+        }
+
+        .event-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .event-day {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .event-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin: 10px 0;
+        }
+
+        .event-year {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .event-details {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .event-details i {
+            margin-right: 8px;
+        }
+
+        .btn-maps {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 25px;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-maps i {
+            margin-right: 8px;
+            color: #cc0000;
+        }
+
+        /* Section Gallery */
+        .gallery-section {
+            background-color: #f9f9f7;
+            padding: 60px 15px 120px;
+        }
+
+        .gallery-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: #ccc;
+        }
+
+        .gallery-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            font-weight: 400;
+            color: #555;
+            margin: 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item img:active {
+            transform: scale(1.1);
+        }
+
+        /* Love Story */
+        .love-story-wrapper {
+            background-color: #ffffff;
+            padding: 60px 0;
+        }
+
+        .story-intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .story-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #4a4a4a;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .story-label {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #4a4a4a;
+            display: block;
+            margin-top: -15px;
+        }
+
+        .story-image-container {
+            padding: 0 20px;
+            margin-bottom: 50px;
+        }
+
+        .arch-frame-story {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            border-top-left-radius: 200px; 
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .arch-frame-story img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(100%); 
+        }
+
+        .story-header {
+            padding: 0 20px;
+            text-align: center;
+            color: #4a4a4a;
+        }
+        .story-content {
+            padding: 0 20px;
+            text-align: center;
+            color: #4a4a4a;
+        }
+
+        /* Section RSVP Kehadiran */
+        .rsvp-section {
+            background-color: #c4c4c4;
+            padding: 60px 20px;
+            text-align: center;
+            color: #4a4a4a;
+        }
+
+        .rsvp-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .rsvp-section p {
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rsvp-form {
+            max-width: 450px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .rsvp-form label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .rsvp-form input, 
+        .rsvp-form select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #000;
+        }
+
+        /* Section Wedding Gift */
+        .gift-section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .gift-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        .gift-section p {
+            font-size: 0.9rem;
+            color: #666;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .btn-gift {
+            background-color: #b08d48;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        #gift-container {
+            display: none;
+            margin-top: 40px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .bank-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            max-width: 350px;
+            margin: 0 auto 20px;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .bank-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: right;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .account-name {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .account-number {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .btn-copy {
+            background-color: #8c9bad;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Wishes Section */
+        .wishes-section {
+            padding: 60px 20px;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .wishes-title {
+            font-family: 'Playfair Display', serif;
+            color: #5d6783;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .wish-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .input-group textarea, 
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            color: #666;
+        }
+
+        .input-group textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        .icon-input i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+
+        .icon-input input {
+            padding-left: 40px;
+        }
+
+        .btn-container {
+            text-align: right;
+        }
+
+        .btn-kirim {
+            background: white;
+            color: #d19275;
+            border: 1px solid #d19275;
+            padding: 8px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .btn-kirim:hover {
+            background: #d19275;
+            color: white;
+        }
+
+        .wishes-info {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+            color: #bbb;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .wishes-divider {
+            border: 0;
+            border-top: 2px solid #333;
+            margin: 10px 0 25px;
+        }
+
+        .wishes-display {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .wish-item {
+            margin-bottom: 25px;
+        }
+
+        .wish-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .wish-name {
+            color: #d19275;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .wish-time {
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        .wish-text {
+            color: #444;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        #wishes-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+            scroll-behavior: smooth;
+            margin-top: 15px;
+        }
+
+        #wishes-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #wishes-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        #wishes-container::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 10px;
+        }
+
+        #wishes-container::-webkit-scrollbar-thumb:hover {
+            background: #b8962d;
+        }
+
+        /* Section Closing */
+        .closing-section {
+            position: relative;
+            width: 100%;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            background: url('Images/G-3.PNG') no-repeat center center;
+            background-size: cover;
+            padding-bottom: 80px;
+            color: #4a4a4a;
+        }
+
+        .closing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.9) 70%, rgba(255,255,255,1) 100%);
+            z-index: 1;
+        }
+
+        .closing-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 30px;
+            max-width: 600px;
+        }
+
+        .closing-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .closing-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #888;
+        }
+
+        .closing-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-style: italic;
+            font-weight: 400;
+            color: #4a4a4a;
+            margin: 0;
+        }
+
+        /* Footer Utama */
+        .main-footer {
+            background-color: #4a4a4a;
+            padding: 50px 20px 120px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer-copyright {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+        }
+
+        .footer-copyright a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 9999;
+        }
 
         .nav-item {
-        text-decoration: none;
-        color: #888;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transition: all 0.3s ease;
-        padding: 8px 15px;
-        border-radius: 20px;
-        font-size: 0.7rem;
-    }
+            text-decoration: none;
+            color: #888;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+        }
 	
-	.nav-item.active {
-        color: black; /* Warna Emas */
-        background: rgba(255, 255, 255, 0.5);
-        /* Bayangan di bawah ikon yang menonjol */
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
-        transform: translateY(-10px); /* Ikon naik sedikit */
-    }
-        .nav-item:last-child {
-            border-right: none;
+        .nav-item.active {
+            color: black;
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+            transform: translateY(-5px);
         }
 
         .nav-item i {
-        font-size: 1.2rem;
-        margin-bottom: 2px;
-    }
-
-        .footer-link {
-            position: fixed;
-            bottom: 70px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.6);
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            border: 1px solid rgba(255,255,255,0.3);
-            z-index: 10;
+            font-size: 1.2rem;
+            margin-bottom: 2px;
         }
-        /* Opsional: Tambahkan efek transisi pada tombol saat ditekan */
-.nav-link {
-    transition: all 0.3s ease;
-}
 
-.nav-link:active {
-    transform: scale(0.9); /* Efek sedikit mengecil saat diklik */
-}
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:active {
+            transform: scale(0.9);
+        }
         
-/* --- CSS Lightbox --- */
+        /* --- CSS Lightbox --- */
         .lightbox {
-            display: none; /* Sembunyi secara default */
+            display: none;
             position: fixed;
-            z-index: 2000; /* Di atas segalanya */
+            z-index: 2000;
             top: 0;
             left: 0;
             width: 100%;
@@ -1106,16 +1029,16 @@ body.no-scroll {
             font-size: 2rem;
             cursor: pointer;
         }
-        
     </style>
 </head>
 <body class="no-scroll">
+
 <div id="envelope-overlay" class="envelope-overlay">
-    <div class="envelope-content hero" style="margin-bottom: 40px; data-aos="zoom-in">
-        <div class="hero-text" >
+    <div class="envelope-content hero" style="margin-bottom: 40px;" data-aos="zoom-in">
+        <div class="hero-text">
             <p data-aos="fade-right" data-aos-delay="200">The Wedding Of</p>
             <h1 data-aos="fade-right" data-aos-delay="400">Hafis &<br>Amelia</h1>
-            <p class="date-text" style="margin-bottom: 40px;"data-aos="fade-right" data-aos-delay="600">Rabu, 30 Juli 2026</p>
+            <p class="date-text" style="margin-bottom: 40px;" data-aos="fade-right" data-aos-delay="600">Rabu, 30 Juli 2026</p>
         </div>
         <h3 id="guest-name" style="margin-bottom: 20px; color: white;">Nama Tamu</h3>
         
@@ -1124,10 +1047,10 @@ body.no-scroll {
         </button>
     </div>
 </div>
-	<section id="cover">
+
+<section id="cover">
     <div class="slideshow-container">
         <div class="slideshow-overlay"></div>
-        <!-- Ganti URL_FOTO_X_DISINI dengan link foto Anda -->
         <div class="slide active" style="background-image: url('Images/G-2.PNG');"></div>
         <div class="slide" style="background-image: url('Images/G-4.PNG');"></div>
         <div class="slide" style="background-image: url('Images/G-3.PNG');"></div>
@@ -1160,9 +1083,9 @@ body.no-scroll {
                 <small>Seconds</small>
             </div>
         </div>
-		</div>
-        </section>
-<!-- Section Pembukaan Quotes & Mini Gallery -->
+    </div>
+</section>
+
 <div class="content-section">
     <div class="quotes-container" data-aos="fade-up">
         <i class="fa-solid fa-quote-right"></i>
@@ -1172,21 +1095,18 @@ body.no-scroll {
         <span class="quotes-author">(QS. Ar-Rum: 21)</span>
     </div>
 
-    <!-- Mini Gallery Slider -->
     <div class="gallery-slider">
         <div class="slider-track">
-            <!-- Foto 1-5 (Duplikasi foto agar loop tidak terputus) -->
             <img src="Images/G-1.PNG" alt="Gallery 1">
             <img src="Images/G-2.PNG" alt="Gallery 2">
             <img src="Images/G-3.PNG" alt="Gallery 3">
             <img src="Images/G-4.PNG" alt="Gallery 4">
             <img src="Images/G-5.PNG" alt="Gallery 5">
-            <!-- Duplikasi untuk looping mulus -->
-              <img src="Images/G-1.PNG" alt="Gallery 1">
-                       <img src="Images/G-2.PNG" alt="Gallery 2">
-                       <img src="Images/G-3.PNG" alt="Gallery 3">
-                       <img src="Images/G-4.PNG" alt="Gallery 4">
-                       <img src="Images/G-5.PNG" alt="Gallery 5">
+            <img src="Images/G-1.PNG" alt="Gallery 1">
+            <img src="Images/G-2.PNG" alt="Gallery 2">
+            <img src="Images/G-3.PNG" alt="Gallery 3">
+            <img src="Images/G-4.PNG" alt="Gallery 4">
+            <img src="Images/G-5.PNG" alt="Gallery 5">
         </div>
     </div>
 </div>
@@ -1201,7 +1121,7 @@ body.no-scroll {
     <div class="divider-line" data-aos="fade-down"></div>
 
     <div class="mempelai-container" data-aos="fade-right">
-        <div class="arch-frame" >
+        <div class="arch-frame">
             <img src="Images/Pria.PNG" alt="Mempelai Pria">
         </div>
         <h2 class="mempelai-name" data-aos="fade-up">Muhammad Hafis</h2>
@@ -1225,7 +1145,6 @@ body.no-scroll {
     </div>
 </section>
 
-<!-- Section Wedding Event -->
 <section class="event-section" id="event">
     <div class="event-header">
         <div class="event-title-wrapper" data-aos="fade-right">
@@ -1234,7 +1153,7 @@ body.no-scroll {
         </div>
         <div class="event-line" data-aos="fade-left"></div>
     </div>
-    <!-- Akad Nikah -->
+
     <div class="event-card">
         <h3 class="event-title" data-aos="fade-up">Akad</h3>
         <p class="event-day" data-aos="fade-right">Minggu</p>
@@ -1248,9 +1167,8 @@ body.no-scroll {
         </div>
     </div>
 
-    <!-- Resepsi -->
     <div class="event-card">
-        <h3 class="event-title"  data-aos="fade-up">Resepsi</h3>
+        <h3 class="event-title" data-aos="fade-up">Resepsi</h3>
         <p class="event-day" data-aos="fade-right">Rabu</p>
         <div class="event-date" data-aos="fade-left">03</div>
         <p class="event-year" data-aos="fade-right">Desember, 2025</p>
@@ -1261,14 +1179,12 @@ body.no-scroll {
             <p>Sungai Geringging, Padang Tarok Kab.Padang Pariaman</p>
         </div>
 
-        <!-- Tombol Google Maps -->
         <a href="https://maps.google.com" target="_blank" class="btn-maps" data-aos="zoom-in">
             <i class="fa-solid fa-location-dot"></i> Google Map
         </a>
     </div>
 </section>
 
-<!-- Section Gallery -->
 <section class="gallery-section" id="gallery">
     <div class="gallery-header">
         <div class="gallery-line" data-aos="fade-right"></div>
@@ -1276,59 +1192,44 @@ body.no-scroll {
     </div>
 
     <div class="gallery-grid">
-        <!-- Foto 1 -->
         <div class="gallery-item" data-aos="zoom-in">
-            <img src="Images/G-1.PNG" onclick="openLightbox(this.src)"
-              alt="Wedding Photo 1">
+            <img src="Images/G-1.PNG" onclick="openLightbox(this.src)" alt="Wedding Photo 1">
         </div>
-        <!-- Foto 2 -->
         <div class="gallery-item" data-aos="zoom-in">
-            <img src="Images/G-2.PNG" onclick="openLightbox(this.src)"
-              alt="Wedding Photo 2">
+            <img src="Images/G-2.PNG" onclick="openLightbox(this.src)" alt="Wedding Photo 2">
         </div>
-        <!-- Foto 3 -->
         <div class="gallery-item" data-aos="zoom-in"> 
-            <img src="Images/G-3.PNG" onclick="openLightbox(this.src)"
-              alt="Wedding Photo 3">
+            <img src="Images/G-3.PNG" onclick="openLightbox(this.src)" alt="Wedding Photo 3">
         </div>
-        <!-- Foto 4 -->
         <div class="gallery-item" data-aos="zoom-in">
-            <img src="Images/G-4.PNG" onclick="openLightbox(this.src)"
-              alt="Wedding Photo 4">
+            <img src="Images/G-4.PNG" onclick="openLightbox(this.src)" alt="Wedding Photo 4">
         </div>
-        <!-- Foto 5 -->
         <div class="gallery-item" data-aos="zoom-in">
-            <img src="Images/G-5.PNG" onclick="openLightbox(this.src)"
-              alt="Wedding Photo 5">
+            <img src="Images/G-5.PNG" onclick="openLightbox(this.src)" alt="Wedding Photo 5">
         </div>
-        <!-- Foto 6 -->
         <div class="gallery-item" data-aos="zoom-in">
-            <img src="Images/G-6.PNG" onclick="openLightbox(this.src)"
-              alt="Wedding Photo 6">
+            <img src="Images/G-6.PNG" onclick="openLightbox(this.src)" alt="Wedding Photo 6">
         </div>
     </div>
 </section>
-<!-- Struktur Lightbox -->
+
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <span class="close-lightbox">&times;</span>
+    <span class="close-lightbox">×</span>
     <img id="lightbox-img" src="" alt="Full Image">
 </div>
 
 <div class="love-story-wrapper">
-    <!-- Bagian Nama & Story (Referensi image_10.png) -->
     <div class="story-intro">
         <h1 class="story-names" data-aos="fade-down">Hafis & Amelia</h1>
         <span class="story-label" data-aos="fade-up">Story</span>
     </div>
 
-    <!-- Bagian Foto Arch (Referensi image_10.png) -->
     <div class="story-image-container">
         <div class="arch-frame-story" data-aos="zoom-in">
             <img src="Images/Story.jpg" alt="Hafis and Amelia">
         </div>
     </div>
 
-    <!-- Bagian Teks Cerita (Referensi image_8.png & image_9.png) -->
     <div class="story-section">
         <div class="story-header" data-aos="fade-up">
             <h2>LOVE STORY</h2>
@@ -1336,32 +1237,25 @@ body.no-scroll {
 
         <div class="story-content" data-aos="zoom-out">
             <p>Pertemuan kami berawal dari tempat kerja. Kami dipertemukan secara tidak terduga sepertinya semesta memang sengaja merangkainya,</p>
-            
             <p>dari tatap yang tak sengaja, tumbuhlah percakapan sederhana, dari pertemanan, hadir kenyamanan.</p>
-
             <p>singkat cerita kami saling komunikasi, perasaan yang awalnya samar perlahan tumbuh menjadi nyata, hingga akhirnya kami memutuskan untuk menjalin hubungan. Namun takdir sempat memisahkan kami tetapi takdir pula yang menyatukan kami kembali.</p>
-
             <p>Sampai akhirnya kami kembali dan saling meyakinkan, bersama kami belajar, tumbuh dan saling menguatkan dalam setiap proses yang kami jalani.</p>
-
             <p>Hingga pada <strong>27 September 2025</strong> kami memutuskan mengikat hubungan yang disaksikan oleh keluarga besar.</p>
-
             <p>Hari ini dengan penuh syukur dan kebahagiaan, kami memulai babak baru. Bukan lagi sekedar “Aku” dan “Kamu”, tapi “Kita”.</p>
-
             <p>Kami Percaya, bukan karna bertemu lalu berjodoh, melainkan karna berjodoh lah maka kami dipertemukan. Dan inilah kisah kami, yang kini berlanjut menjadi ikatan suci.</p>
 
-            <div class="quote-ali">
+            <div class="quote-ali" style="margin-top: 20px; font-style: italic; color: #666;">
                 Sebagaimana yang pernah dikatakan oleh Ali Bin Abi Thalib “ Apa yang menjadi takdirmu akan menemukan jalannya untuk menemukanmu”.
             </div>
         </div>
     </div>
 </div>
 
-<!-- Section Konfirmasi Kehadiran -->
 <section class="rsvp-section" id="wishes">
     <h2 data-aos="fade-up">Konfirmasi Kehadiran</h2>
     <p data-aos="fade-up">Mohon kesediaannya untuk melakukan konfirmasi kehadiran, supaya kami bisa mempersiapkan kehadiran anda dengan baik.</p>
 
-   <form class="rsvp-form" id="form-rsvp" data-aos="zoom-out">
+    <form class="rsvp-form" id="form-rsvp" data-aos="zoom-out">
         <div class="form-group">
             <input type="text" name="nama" placeholder="Nama Lengkap" required>
         </div>
@@ -1384,16 +1278,13 @@ body.no-scroll {
     <h2>Wedding Gift</h2>
     <p>Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado melalui:</p>
 
-    <!-- Tombol Utama -->
     <button class="btn-gift" onclick="toggleGift()">
         <i class="fas fa-gift"></i> Kirim Hadiah
     </button>
 
-    <!-- Konten Rekening (Muncul saat diklik) -->
     <div id="gift-container">
         <hr style="width: 80%; border: 0.5px solid #eee; margin: 30px auto;">
 
-        <!-- Rekening 1 -->
         <div class="bank-card" data-aos="fade-up" data-aos-delay="100">
             <div class="bank-name">SEABANK</div>
             <div class="account-name">SITI NURLAILATUL AMALIAH</div>
@@ -1401,7 +1292,6 @@ body.no-scroll {
             <button class="btn-copy" onclick="copyText('rek1')">📋 Salin Rekening</button>
         </div>
 
-        <!-- Rekening 2 -->
         <div class="bank-card" data-aos="fade-up" data-aos-delay="300">
             <div class="bank-name">BRI</div>
             <div class="account-name">MHD ANAFIS</div>
@@ -1409,7 +1299,6 @@ body.no-scroll {
             <button class="btn-copy" onclick="copyText('rek2')">📋 Salin Rekening</button>
         </div>
 
-        <!-- Alamat Pengiriman -->
         <div class="bank-card" style="background: white; border: 1px solid #eee;">
             <div style="text-align: center; font-size: 2rem; margin-bottom: 10px;">🏠</div>
             <div style="text-align: center; font-size: 0.9rem; color: #666;" id="alamat">
@@ -1421,11 +1310,11 @@ body.no-scroll {
         </div>
     </div>
 </div>
+
 <div class="wishes-section">
     <div class="container" data-aos="fade-up">
         <h2 class="wishes-title">Friends Wishes</h2>
         
-        <!-- Form Box -->
         <div class="wish-card">
             <form id="wish-form">
                 <div class="input-group">
@@ -1441,131 +1330,116 @@ body.no-scroll {
             </form>
         </div>
 
-        <!-- Counter & Divider -->
         <div class="wishes-info">
             <span id="wishes-counter">0 BEST FRIENDS WISHES</span>
             <hr class="wishes-divider">
         </div>
 
-        <!-- Scrollable Wishes List -->
         <div class="wishes-display" id="wishes-container">
-            <!-- Data dari Firebase akan muncul di sini -->
-        </div>
+            </div>
     </div>
 </div>
 
-<!-- Section Closing -->
 <div class="closing-section">
     <div class="closing-content" data-aos="fade-up">
         <p class="closing-text">
             Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do'a restu kepada kedua mempelai.
         </p>
-        
         <p class="closing-title" data-aos="fade-up" data-aos-delay="200">The Wedding of</p>
         <h2 class="closing-names" data-aos="fade-up" data-aos-delay="400">Hafis & Amelia</h2>
     </div>
 </div>
 
-<!-- Footer -->
 <footer class="main-footer">
-    <!-- Logo Melingkar (Gunakan gambar ring/logo Anda) -->
     <img src="Images/Logo.PNG" alt="Logo Rings" class="footer-logo" data-aos="fade-up" data-aos-delay="200">
-
-    <!-- Teks Hak Cipta -->
     <div class="footer-copyright" data-aos="fade-up" data-aos-delay="400">
         © 2026 Made With Love by<br>
         <a href="https://sr-invitation.my.id">sr-invitation</a>
     </div>
 </footer>
 
-    <nav class="bottom-nav active">
-        <a href="#cover" class="nav-item ">
-            <i class="fa-regular fa-envelope-open"></i>
-            Cover
-        </a>
-        <a href="#mempelai" class="nav-item">
-            <i class="fa-solid fa-ring"></i>
-            Couple
-        </a>
-        <a href="#event" class="nav-item">
-            <i class="fa-regular fa-calendar-check"></i>
-            Event
-        </a>
-        <a href="#gallery" class="nav-item">
-            <i class="fa-regular fa-images"></i>
-            Gallery
-        </a>
-        <a href="#wishes" class="nav-item">
-            <i class="fa-regular fa-comment-dots"></i>
-            Wishes
-        </a>
-    </nav>
+<nav class="bottom-nav">
+    <a href="#cover" class="nav-item active">
+        <i class="fa-regular fa-envelope-open"></i>
+        Cover
+    </a>
+    <a href="#mempelai" class="nav-item">
+        <i class="fa-solid fa-ring"></i>
+        Couple
+    </a>
+    <a href="#event" class="nav-item">
+        <i class="fa-regular fa-calendar-check"></i>
+        Event
+    </a>
+    <a href="#gallery" class="nav-item">
+        <i class="fa-regular fa-images"></i>
+        Gallery
+    </a>
+    <a href="#wishes" class="nav-item">
+        <i class="fa-regular fa-comment-dots"></i>
+        Wishes
+    </a>
+</nav>
 
-<!-- GUNAKAN SATU BLOK MODUL INI SAJA -->
- <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
-      import { getDatabase, ref, push, set, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-database.js";
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+    import { getDatabase, ref, push, set, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-database.js";
     
-      const firebaseConfig = {
+    const firebaseConfig = {
         apiKey: "AIzaSyC4i4Z8tiznOL3-d93fFgRY8pEPgHyON_U",
         authDomain: "white-mode.firebaseapp.com",
         projectId: "white-mode",
         storageBucket: "white-mode.firebasestorage.app",
         messagingSenderId: "403147165676",
-        appId: "1:403147165676:web:11e9545d8261fb59507ac9", // <-- TAMBAHKAN KOMA DI SINI
+        appId: "1:403147165676:web:11e9545d8261fb59507ac9",
         databaseURL: "https://undangan-digital-white-default-rtdb.asia-southeast1.firebasedatabase.app"
-      };
+    };
     
-      const app = initializeApp(firebaseConfig);
-      const db = getDatabase(app);
-      const wishesRef = ref(db, 'wishes');
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const wishesRef = ref(db, 'wishes');
     
-      // --- LOGIKA MENGIRIM PESAN ---
-      const wishForm = document.getElementById('wish-form');
-      wishForm.addEventListener('submit', (e) => {
-          e.preventDefault(); 
+    const wishForm = document.getElementById('wish-form');
+    wishForm.addEventListener('submit', (e) => {
+        e.preventDefault(); 
     
-          const nameInput = document.getElementById('wish-name');
-          const textInput = document.getElementById('wish-text');
-          const submitBtn = wishForm.querySelector('.btn-kirim');
+        const nameInput = document.getElementById('wish-name');
+        const textInput = document.getElementById('wish-text');
+        const submitBtn = wishForm.querySelector('.btn-kirim');
     
-          if (!nameInput.value.trim() || !textInput.value.trim()) return;
+        if (!nameInput.value.trim() || !textInput.value.trim()) return;
     
-          submitBtn.disabled = true;
-          submitBtn.innerText = "Mengirim...";
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Mengirim...";
     
-          const newWishRef = push(wishesRef);
-          set(newWishRef, {
-              nama: nameInput.value, // Menyimpan dengan kunci 'nama'
-              pesan: textInput.value,
-              timestamp: serverTimestamp()
-          })
-          .then(() => {
-              wishForm.reset();
-              submitBtn.disabled = false;
-              submitBtn.innerText = "Kirim";
-              alert("Ucapan berhasil terkirim!");
-          })
-          .catch((err) => {
-              console.error(err);
-              submitBtn.disabled = false;
-              submitBtn.innerText = "Kirim";
-          });
-      });
+        const newWishRef = push(wishesRef);
+        set(newWishRef, {
+            nama: nameInput.value,
+            pesan: textInput.value,
+            timestamp: serverTimestamp()
+        })
+        .then(() => {
+            wishForm.reset();
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Kirim";
+            alert("Ucapan berhasil terkirim!");
+            const wishesContainer = document.getElementById('wishes-container');
+            if (wishesContainer) {
+                wishesContainer.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Kirim";
+        });
+    });
 	  
-	  // Tambahkan baris ini setelah alert "berhasil terkirim"
-const wishesContainer = document.getElementById('wishes-container');
-if (wishesContainer) {
-    wishesContainer.scrollTo({ top: 0, behavior: 'smooth' });
-}
+    const container = document.getElementById('wishes-container');
+    const counter = document.getElementById('wishes-counter');
     
-      // --- LOGIKA MENAMPILKAN PESAN ---
-      const container = document.getElementById('wishes-container');
-      const counter = document.getElementById('wishes-counter');
-    
-function timeAgo(timestamp) {
+    function timeAgo(timestamp) {
         if (!timestamp) return 'Baru saja';
-        
         const now = new Date().getTime();
         const seconds = Math.floor((now - timestamp) / 1000);
     
@@ -1587,273 +1461,216 @@ function timeAgo(timestamp) {
         return "Baru saja";
     }
     
-    
-    
-      onValue(wishesRef, (snapshot) => {
-          const dataRaw = snapshot.val();
-          if (!container) return;
-          container.innerHTML = '';
+    onValue(wishesRef, (snapshot) => {
+        const dataRaw = snapshot.val();
+        if (!container) return;
+        container.innerHTML = '';
           
-          if (!dataRaw) {
-              container.innerHTML = '<p style="text-align:center; color:#888;">Belum ada ucapan.</p>';
-              return;
-          }
+        if (!dataRaw) {
+            container.innerHTML = '<p style="text-align:center; color:#888;">Belum ada ucapan.</p>';
+            return;
+        }
     
-          const list = Object.values(dataRaw);
-          if(counter) counter.innerText = ` ${list.length} BEST FRIENDS WISHES`;
+        const list = Object.values(dataRaw);
+        if(counter) counter.innerText = ` ${list.length} BEST FRIENDS WISHES`;
     
-          // Urutkan terbaru di atas
-          list.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+        list.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
     
-          list.forEach((data) => {
-              container.innerHTML += `
-                  <div class="wish-item">
-                      <div class="wish-header">
-                          <span class="wish-name">${data.nama}</span> <!-- DIUBAH DARI pengirim KE nama -->
-                          <span class="wish-time">
-                              <i class="fa-regular fa-clock"></i> ${timeAgo(data.timestamp)}
-                          </span>
-                          
-                      </div>
-                      <p class="wish-text">${data.pesan}</p>
-                  </div>
-				   <hr class="wishes-divider" style="opacity: 0.3; height: 1px;">
-              `;
-          });
-      });
-    </script>
+        list.forEach((data) => {
+            container.innerHTML += `
+                <div class="wish-item">
+                    <div class="wish-header">
+                        <span class="wish-name">${data.nama}</span>
+                        <span class="wish-time">
+                            <i class="fa-regular fa-clock"></i> ${timeAgo(data.timestamp)}
+                        </span>
+                    </div>
+                    <p class="wish-text">${data.pesan}</p>
+                </div>
+                <hr class="wishes-divider" style="opacity: 0.3; height: 1px;">
+            `;
+        });
+    });
+</script>
     
-  <script>
-    // Fungsi untuk mengambil parameter 'to' dari URL
+<script>
     function getGuestName() {
         const urlParams = new URLSearchParams(window.location.search);
-        const guestName = urlParams.get('to'); // Mengambil ?to=Nama+Tamu
-        
+        const guestName = urlParams.get('to');
         const guestElement = document.getElementById('guest-name');
         
         if (guestName && guestElement) {
-            // Mengganti karakter '+' atau '%20' menjadi spasi biasa
             guestElement.innerText = decodeURIComponent(guestName.replace(/\+/g, ' '));
         }
     }
-
-    // Jalankan fungsi saat halaman dimuat
     window.addEventListener('DOMContentLoaded', getGuestName);
 </script>
     
-    <script>
-	function openInvitation() {
-    // 1. Ambil elemen envelope
-    const envelope = document.getElementById('envelope-overlay');
-    
-    // 2. Tambahkan class hide untuk animasi menghilang
-    envelope.classList.add('hide');
-    
-    // 3. HAPUS kelas no-scroll agar tamu bisa scroll setelah undangan dibuka
-    document.body.classList.remove('no-scroll');
+<script>
+    function openInvitation() {
+        const envelope = document.getElementById('envelope-overlay');
+        envelope.classList.add('hide');
+        document.body.classList.remove('no-scroll');
 
-    // 4. Jalankan musik (jika ada)
-    const music = document.getElementById('weddingMusic');
-    const musicBtn = document.getElementById('musicControl');
-    if (music) {
+        const music = document.getElementById('weddingMusic');
+        const musicBtn = document.getElementById('musicControl');
+        if (music) {
             music.play().catch(error => {
-                console.log("Autoplay diblokir browser, musik akan diputar setelah interaksi.");
+                console.log("Autoplay diblokir browser, musik dimainkan setelah interaksi.");
             });
-            musicBtn.style.display = 'flex'; // Munculkan tombol kontrol musik
+            musicBtn.style.display = 'flex';
         }
-    // 5. Refresh AOS agar animasi konten dalam terdeteksi
-    setTimeout(() => {
-        AOS.refresh();
-    }, 1000);
-}
-
-
-let isPlaying = true;
-
-function toggleMusic() {
-    const music = document.getElementById('weddingMusic');
-    const icon = document.getElementById('musicIcon');
-
-    if (isPlaying) {
-        music.pause();
-        icon.classList.remove('fa-spin'); // Hentikan putaran icon
-        isPlaying = false;
-    } else {
-        music.play();
-        icon.classList.add('fa-spin'); // Putar kembali icon
-        isPlaying = true;
+        setTimeout(() => {
+            AOS.refresh();
+        }, 1000);
     }
-}
+
+    let isPlaying = true;
+    function toggleMusic() {
+        const music = document.getElementById('weddingMusic');
+        const icon = document.getElementById('musicIcon');
+
+        if (isPlaying) {
+            music.pause();
+            icon.classList.remove('fa-spin');
+            isPlaying = false;
+        } else {
+            music.play();
+            icon.classList.add('fa-spin');
+            isPlaying = true;
+        }
+    }
 </script>
     
-    <script>
-        // --- Script untuk Slideshow ---
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-        const slideInterval = 5000; // Durasi per slide (ms), misalnya 5 detik
+<script>
+    // Slideshow Background
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    const slideInterval = 5000;
 
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active'); // Sembunyikan slide sekarang
-            currentSlide = (currentSlide + 1) % slides.length; // Hitung index slide berikutnya
-            slides[currentSlide].classList.add('active'); // Tampilkan slide berikutnya
-        }
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    setInterval(nextSlide, slideInterval);
 
-        // Jalankan slideshow secara otomatis
-        setInterval(nextSlide, slideInterval);
-        // ------------------------------
+    // Countdown Timer
+    const targetDate = new Date("jul 30, 2026 08:00:00").getTime();
+    setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-        // Script sederhana untuk countdown (tetap sama)
-        const targetDate = new Date("jul 30, 2026 08:00:00").getTime();
+        const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((distance % (1000 * 60)) / 1000);
 
-        setInterval(() => {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+        document.getElementById("days").innerText = d < 10 ? "0"+d : (d < 0 ? "00" : d);
+        document.getElementById("hours").innerText = h < 10 ? "0"+h : (h < 0 ? "00" : h);
+        document.getElementById("minutes").innerText = m < 10 ? "0"+m : (m < 0 ? "00" : m);
+        document.getElementById("seconds").innerText = s < 10 ? "0"+s : (s < 0 ? "00" : s);
+    }, 1000);
 
-            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = d < 10 ? "0"+d : (d < 0 ? "00" : d);
-            document.getElementById("hours").innerText = h < 10 ? "0"+h : (h < 0 ? "00" : h);
-            document.getElementById("minutes").innerText = m < 10 ? "0"+m : (m < 0 ? "00" : m);
-            document.getElementById("seconds").innerText = s < 10 ? "0"+s : (s < 0 ? "00" : s);
-        }, 1000);
-
-        // Contoh sederhana kontrol musik (perlu tag audio aktif)
-        /*
-        const musicBtn = document.getElementById('playMusic');
-        const audio = document.getElementById('weddingMusic');
-        let isPlaying = false;
-
-        musicBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                audio.pause();
-                musicBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-            } else {
-                audio.play().catch(error => {
-                    console.log("Autoplay dicegah oleh browser, perlu interaksi user.");
-                });
-                musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-            }
-            isPlaying = !isPlaying;
-        });
-        */
-// --- Script Lightbox ---
-        function openLightbox(src) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            
-            lightboxImg.src = src;
-            lightbox.classList.add('active');
-            // Mencegah scroll saat lightbox terbuka
-            document.body.style.overflow = 'hidden';
-        }
+    // Lightbox Gallery
+    function openLightbox(src) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
           
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            // Mengembalikan scroll
-            document.body.style.overflow = 'auto';
-        }
-         // Konfirmasikehadiran to spreadsheet
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxA7NiFUYsSoQ80zS3g_dig5w2enMwMNExq1QvjJZ2RpDUX-NsB6jaKrtl1j0KbLUxULQ/exec';
-        const form = document.getElementById('form-rsvp');
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Google Sheets RSVP
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxA7NiFUYsSoQ80zS3g_dig5w2enMwMNExq1QvjJZ2RpDUX-NsB6jaKrtl1j0KbLUxULQ/exec';
+    const form = document.getElementById('form-rsvp');
         
-        form.addEventListener('submit', e => {
-          e.preventDefault();
-          
-          // Ubah teks tombol saat loading
-          const submitBtn = form.querySelector('.btn-submit');
-          submitBtn.disabled = true;
-          submitBtn.innerHTML = "Mengirim...";
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const submitBtn = form.querySelector('.btn-submit');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Mengirim...";
         
-          fetch(scriptURL, { 
-            method: 'POST', 
-            body: new FormData(form)
-          })
-          .then(response => {
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
             alert('Konfirmasi kehadiran berhasil terkirim!');
             submitBtn.disabled = false;
             submitBtn.innerHTML = "Kirim Konfirmasi";
             form.reset();
-          })
-          .catch(error => {
+        })
+        .catch(error => {
             console.error('Error!', error.message);
             alert('Terjadi kesalahan, silakan coba lagi.');
             submitBtn.disabled = false;
             submitBtn.innerHTML = "Kirim Konfirmasi";
-          });
         });
+    });
         
-        
-	// Ganti fungsi toggleGift dan copyText yang lama dengan ini:
-function toggleGift() {
-    const container = document.getElementById('gift-container');
-    if (container.style.display === 'block') {
-        container.style.display = 'none';
-    } else {
-        container.style.display = 'block';
-        // Memberikan sedikit waktu agar container muncul sebelum scroll
-        setTimeout(() => {
-            container.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 100);
+    // Gift Section & Copy Clipboard
+    function toggleGift() {
+        const container = document.getElementById('gift-container');
+        if (container.style.display === 'block') {
+            container.style.display = 'none';
+        } else {
+            container.style.display = 'block';
+            setTimeout(() => {
+                container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
     }
-}
 
-function copyText(elementId) {
-    const element = document.getElementById(elementId);
-    if (element) {
-        const text = element.innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            alert("Berhasil disalin: " + text);
-        }).catch(err => {
-            console.error('Gagal menyalin: ', err);
-        });
+    function copyText(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Berhasil disalin: " + text);
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+            });
+        }
     }
-}
-    </script>
+</script>
 	
 <script>
-    // Ambil semua section yang ingin dipantau
-    const sections = document.querySelectorAll("section");
-    // Ambil semua link di navbar
+    // FIX BUG: Selektor Scroll Spy untuk mengaktifkan bottom-nav secara akurat
+    const targetSections = document.querySelectorAll("#cover, #mempelai, #event, #gallery, #wishes");
     const navLinks = document.querySelectorAll(".nav-item");
 
     window.addEventListener("scroll", () => {
         let current = "";
-
-        sections.forEach((section) => {
+        targetSections.forEach((section) => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            // Cek jika posisi scroll sudah masuk ke area section tertentu
-            // Angka 100 adalah offset agar perpindahan ikon terasa lebih pas
-            if (pageYOffset >= sectionTop - 100) {
+            if (window.scrollY >= sectionTop - 150) {
                 current = section.getAttribute("id");
             }
         });
 
         navLinks.forEach((link) => {
-            // Hapus class active dari semua ikon
             link.classList.remove("active");
-            
-            // Tambahkan class active jika href link sama dengan id section saat ini
             if (link.getAttribute("href").includes(current)) {
                 link.classList.add("active");
             }
         });
     });
 </script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({
-    duration: 1000, // Durasi animasi (ms)
-    once: false,     // Animasi hanya berjalan sekali saat scroll ke bawah
-    mirror: true,   // TAMBAHKAN INI: Animasi akan dipicu ulang saat scroll melewati elemen ke atas
-  offset: 120, // Jarak (pixel) elemen dari bawah layar sebelum animasi dimulai
-  }); 
+    AOS.init({
+        duration: 1000,
+        once: false,
+        mirror: true,
+        offset: 120,
+    }); 
 </script>
+
 <audio id="weddingMusic" loop>
     <source src="Musik/Musik.mp3" type="audio/mpeg">
     Browser Anda tidak mendukung elemen audio.
@@ -1862,5 +1679,6 @@ function copyText(elementId) {
 <div id="musicControl" onclick="toggleMusic()" style="position: fixed; bottom: 100px; right: 20px; z-index: 9999; background: rgba(212, 175, 55, 0.8); width: 40px; height: 40px; border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
     <i id="musicIcon" class="fa-solid fa-compact-disc fa-spin"></i>
 </div>
+
 </body>
 </html>
